@@ -210,8 +210,8 @@ namespace VRNeckSafer
                     if (js.IsButtonPressed(but_reset, pov_reset))
                         hmdYawOffset = vr.getHmdYaw();
 
-                    int y = vr.getHmdYaw();
                     int hmdYaw = -(vr.getHmdYaw() - hmdYawOffset + sum_offset_angle);
+ 
                     if (hmdYaw < -180)
                         hmdYaw += 360;
                     if (hmdYaw > 180) 
@@ -237,7 +237,7 @@ namespace VRNeckSafer
                     }
                 }
                 else
-                    hmdyawLB.Text = "Hmd yaw: -- deg";
+                    hmdyawLB.Text = "HMD yaw: -- deg";
             }
 
             sum_offset_angle = joy_offset_angle + auto_offset_angle;
