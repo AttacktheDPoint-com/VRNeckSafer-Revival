@@ -74,9 +74,9 @@ namespace VRNeckSafer
                 }
             }
 
-            js.setJoystickButton(conf.JoystickGUID, conf.LeftButton, ref but_left, ref pov_left);
-            js.setJoystickButton(conf.JoystickGUID, conf.RightButton, ref but_right, ref pov_right);
-            js.setJoystickButton(conf.JoystickGUID, conf.ResetButton, ref but_reset, ref pov_reset);
+            js.setJoystickButton(conf.JoystickGUID, conf.LeftButton, conf.Use8WayHat, ref but_left, ref pov_left);
+            js.setJoystickButton(conf.JoystickGUID, conf.RightButton, conf.Use8WayHat, ref but_right, ref pov_right);
+            js.setJoystickButton(conf.JoystickGUID, conf.ResetButton, conf.Use8WayHat, ref but_reset, ref pov_reset);
 
             setComboBoxes();
 
@@ -111,24 +111,36 @@ namespace VRNeckSafer
 
             for (int i = 0; i < js.GetJoystick(JoystickCB.SelectedIndex).Capabilities.ButtonCount; i++)
             {
-                leftCB.Items.Add("But: " + (i+1));
+                leftCB.Items.Add("But: " + (i + 1));
                 rightCB.Items.Add("But: " + (i + 1));
                 resetCB.Items.Add("But: " + (i + 1));
             }
             for (int i = 0; i < js.GetJoystick(JoystickCB.SelectedIndex).Capabilities.PovCount; i++)
             {
-                leftCB.Items.Add("Pov " + i + ": U");
-                leftCB.Items.Add("Pov " + i + ": D");
-                leftCB.Items.Add("Pov " + i + ": L");
-                leftCB.Items.Add("Pov " + i + ": R");
-                rightCB.Items.Add("Pov " + i + ": U");
-                rightCB.Items.Add("Pov " + i + ": D");
-                rightCB.Items.Add("Pov " + i + ": L");
-                rightCB.Items.Add("Pov " + i + ": R");
-                resetCB.Items.Add("Pov " + i + ": U");
-                resetCB.Items.Add("Pov " + i + ": D");
-                resetCB.Items.Add("Pov " + i + ": L");
-                resetCB.Items.Add("Pov " + i + ": R");               
+                if (conf.Use8WayHat)
+                {
+                    for (int j = 0; j < 360; j += 45)
+                    {
+                        leftCB.Items.Add("P" + i + ": " + j);
+                        rightCB.Items.Add("P" + i + ": " + j);
+                        resetCB.Items.Add("P" + i + ": " + j);
+                    }
+                }
+                else
+                {
+                    leftCB.Items.Add("Pov " + i + ": U");
+                    leftCB.Items.Add("Pov " + i + ": D");
+                    leftCB.Items.Add("Pov " + i + ": L");
+                    leftCB.Items.Add("Pov " + i + ": R");
+                    rightCB.Items.Add("Pov " + i + ": U");
+                    rightCB.Items.Add("Pov " + i + ": D");
+                    rightCB.Items.Add("Pov " + i + ": L");
+                    rightCB.Items.Add("Pov " + i + ": R");
+                    resetCB.Items.Add("Pov " + i + ": U");
+                    resetCB.Items.Add("Pov " + i + ": D");
+                    resetCB.Items.Add("Pov " + i + ": L");
+                    resetCB.Items.Add("Pov " + i + ": R");
+                }
             }
         }
         private void JoystickCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,14 +155,14 @@ namespace VRNeckSafer
         {
             conf.LeftButton = leftCB.SelectedItem.ToString();
             conf.WriteConfig();
-            js.setJoystickButton(conf.JoystickGUID, conf.LeftButton, ref but_left, ref pov_left);
+            js.setJoystickButton(conf.JoystickGUID, conf.LeftButton, conf.Use8WayHat, ref but_left, ref pov_left);
         }
 
         private void rightCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             conf.RightButton = rightCB.SelectedItem.ToString();
             conf.WriteConfig();
-            js.setJoystickButton(conf.JoystickGUID, conf.RightButton, ref but_right, ref pov_right);
+            js.setJoystickButton(conf.JoystickGUID, conf.RightButton, conf.Use8WayHat, ref but_right, ref pov_right);
         }
 
         private void angleNUD_ValueChanged(object sender, EventArgs e)
@@ -189,8 +201,8 @@ namespace VRNeckSafer
         private void loopTimer_Tick(object sender, EventArgs e)
         {
 
-            bool l_pressed = js.IsButtonPressed(but_left, pov_left);
-            bool r_pressed = js.IsButtonPressed(but_right, pov_right);
+            bool l_pressed = js.IsButtonPressed(conf.Use8WayHat, but_left, pov_left);
+            bool r_pressed = js.IsButtonPressed(conf.Use8WayHat, but_right, pov_right);
 
             trans_offset = new Vector3(0, 0, 0);
 
@@ -219,7 +231,7 @@ namespace VRNeckSafer
                 else
                     joy_offset_angle = 0;
 
-                if (js.IsButtonPressed(but_reset, pov_reset))
+                if (js.IsButtonPressed(conf.Use8WayHat, but_reset, pov_reset))
                     hmdYawOffset = vr.getHmdYaw();
 
                 int hmdYaw = -(vr.getHmdYaw() - hmdYawOffset + sum_offset_angle);
@@ -291,7 +303,7 @@ namespace VRNeckSafer
         {
             conf.ResetButton = resetCB.SelectedItem.ToString();
             conf.WriteConfig();
-            js.setJoystickButton(conf.JoystickGUID, conf.ResetButton, ref but_reset, ref pov_reset);
+            js.setJoystickButton(conf.JoystickGUID, conf.ResetButton, conf.Use8WayHat, ref but_reset, ref pov_reset);
         }
 
         private void transFNUP_ValueChanged(object sender, EventArgs e)

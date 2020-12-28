@@ -28,7 +28,7 @@ namespace VRNeckSafer
             Stick = new Joystick(DInput, guid);
             Stick.Acquire();
         }
-        public bool IsButtonPressed(int but, int pov)
+        public bool IsButtonPressed(bool use8wayhat, int but, int pov)
         {
             if (Stick == null) return false;
 
@@ -42,10 +42,12 @@ namespace VRNeckSafer
             else
             {
                 if (State.PointOfViewControllers[pov] == -1) return false;
+                if (use8wayhat)
+                    return State.PointOfViewControllers[pov] == but;
                 return Math.Abs(State.PointOfViewControllers[pov] - but) < 5000;
             }
         }
-        public void setJoystickButton(String guid, String butstr, ref int but, ref int pov)
+        public void setJoystickButton(String guid, String butstr, bool use8wayhat, ref int but, ref int pov)
         {
             foreach (DeviceInstance joy in ll)
             {
@@ -77,6 +79,12 @@ namespace VRNeckSafer
                                 but = 27000;
                                 break;
                         }
+                    }
+                    else if ((butstr.StartsWith("P")))
+                    {
+                        int.TryParse(butstr.Substring(1, 1), out pov);
+                        int.TryParse(butstr.Substring(4), out but);
+                        but *= 100;
                     }
                     break;
                 }

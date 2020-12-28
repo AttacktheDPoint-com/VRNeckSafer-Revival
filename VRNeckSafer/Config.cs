@@ -21,6 +21,7 @@ namespace VRNeckSafer
         public bool Auto;
         public int ActivationAngle;
         public int DeactivationAngle;
+        public bool Use8WayHat;
 
         public Config()
         {
@@ -35,6 +36,7 @@ namespace VRNeckSafer
             Auto = false;
             ActivationAngle = 70;
             DeactivationAngle = 60;
+            Use8WayHat = false;
         }
 
         static public Config ReadConfig()
