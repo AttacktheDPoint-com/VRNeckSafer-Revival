@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SharpDX;
 using Valve.VR;
+using System.Windows.Forms;
+using System.Threading;
 
 namespace VRNeckSafer
 {
@@ -16,17 +18,34 @@ namespace VRNeckSafer
         private Vector3 DiffXyz;
 
         private float lastAngle;
+        private HmdMatrix34_t seated,lll;
+        public String debugMsg;
 
         public VRStuff()
         {
             var initError = EVRInitError.None;
 
-            system = OpenVR.Init(ref initError, EVRApplicationType.VRApplication_Utility);
+            Poses = new TrackedDevicePose_t[OpenVR.k_unMaxTrackedDeviceCount];
+
+            system = OpenVR.Init(ref initError, EVRApplicationType.VRApplication_Overlay);
+            
 
             if (initError != EVRInitError.None)
+            {
+                MessageBox.Show("Unable to connect to SteamVR/OpenVR","Problem",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
+            }
                 return;
 
-            Poses = new TrackedDevicePose_t[OpenVR.k_unMaxTrackedDeviceCount];
+        }
+
+        public void setHmdSeatedPosition()
+        {
+//            Thread.Sleep(20);
+//            system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseSeated, 0.0f, Poses);
+//            seated = Poses[0].mDeviceToAbsoluteTracking;
+//            seated.m7 = -seated.m7;
+            OpenVR.ChaperoneSetup.GetWorkingSeatedZeroPoseToRawTrackingPose(ref seated);
         }
 
         public bool HmdIsActive()
@@ -39,9 +58,12 @@ namespace VRNeckSafer
 
         public int getHmdYaw()
         {
-            system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseStanding, 0.0f, Poses);
+            system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseSeated, 0.0f, Poses);
             HmdPose = Poses[0].mDeviceToAbsoluteTracking;
-            
+
+            OpenVR.ChaperoneSetup.GetWorkingSeatedZeroPoseToRawTrackingPose(ref lll);
+            debugMsg = lll.m0 +" "+ lll.m1 + " " + lll.m2 + " " + lll.m3 + " " + lll.m4 ;
+
             return (int) (Math.Round(Math.Atan2(HmdPose.m2, HmdPose.m10)* 180.0/Math.PI));
         }
 
@@ -49,40 +71,52 @@ namespace VRNeckSafer
         {
             float Angle = (float)(a * Math.PI / 180.0);
 
-            system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseStanding, 0.0f, Poses);
+            ETrackingUniverseOrigin origin = OpenVR.Compositor.GetTrackingSpace();
+
+            if (origin == ETrackingUniverseOrigin.TrackingUniverseSeated)
+                system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseSeated, 0.0f, Poses);
+            else
+                system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseStanding, 0.0f, Poses);
+
             HmdPose = Poses[0].mDeviceToAbsoluteTracking;
+//            HmdPose.m3 -= seated.m3;
+//            HmdPose.m7 -= seated.m7;
+//            HmdPose.m11 -= seated.m11;
 
-            Vector3 oldHmdXyz = new Vector3(HmdPose.m3, 0.0F, HmdPose.m11);
-            Vector3 newHmdXyz = new Vector3(HmdPose.m3, 0.0F, HmdPose.m11);
+            Vector3 oldHmdXyz = new Vector3(HmdPose.m3, HmdPose.m7, HmdPose.m11);
+            Vector3 newHmdXyz = new Vector3(HmdPose.m3, HmdPose.m7, HmdPose.m11);
 
-          
+
             newHmdXyz = rotateCoord(newHmdXyz, -Angle);
 
-            DiffXyz = Vector3.Subtract(oldHmdXyz, newHmdXyz );
+            DiffXyz = Vector3.Subtract(oldHmdXyz, newHmdXyz);
 
             float c = (float)Math.Cos(Angle);
             float s = (float)Math.Sin(Angle);
 
             HmdMatrix34_t rotatedCenter = new HmdMatrix34_t()
             {
-                m0 = c,
-                m1 = 0,
-                m2 = s,
-                m3 = DiffXyz.X + trans.X,
-                m4 = 0,
+                m0 =  c,
+                m1 =  0,
+                m2 =  s,
+                m3 =  DiffXyz.X + trans.X,
+                m4 =  0,
+//                m5 = seated.m5 + 1,
                 m5 = 1,
                 m6 = 0,
-                m7 = DiffXyz.Y,
+                m7 = HmdPose.m7,//seated.m7, 
                 m8 = -s,
                 m9 = 0,
                 m10 = c,
                 m11 = DiffXyz.Z + trans.Z,
             };
-            OpenVR.ChaperoneSetup.SetWorkingStandingZeroPoseToRawTrackingPose(ref rotatedCenter);
+            if (origin == ETrackingUniverseOrigin.TrackingUniverseSeated)
+                OpenVR.ChaperoneSetup.SetWorkingSeatedZeroPoseToRawTrackingPose(ref rotatedCenter);
+            else
+                OpenVR.ChaperoneSetup.SetWorkingStandingZeroPoseToRawTrackingPose(ref rotatedCenter);
             OpenVR.ChaperoneSetup.ShowWorkingSetPreview();
 
             lastAngle = Angle;
-
         }
         public Vector3 rotateCoord(Vector3 v, float a)
         {

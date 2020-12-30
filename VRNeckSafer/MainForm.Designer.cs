@@ -66,6 +66,7 @@
             this.translationBox1 = new System.Windows.Forms.GroupBox();
             this.rotationBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.debugLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.angleNUD)).BeginInit();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deactivateNUD)).BeginInit();
@@ -461,13 +462,24 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 34;
-            this.label1.Text = "v1.4";
+            this.label1.Text = "v1.5";
+            // 
+            // debugLabel
+            // 
+            this.debugLabel.AutoSize = true;
+            this.debugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.debugLabel.Location = new System.Drawing.Point(3, 225);
+            this.debugLabel.Name = "debugLabel";
+            this.debugLabel.Size = new System.Drawing.Size(37, 13);
+            this.debugLabel.TabIndex = 35;
+            this.debugLabel.Text = "debug";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(297, 238);
+            this.Controls.Add(this.debugLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rotationBox);
             this.Controls.Add(this.translationBox1);
@@ -542,6 +554,7 @@
         private System.Windows.Forms.GroupBox translationBox1;
         private System.Windows.Forms.GroupBox rotationBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label debugLabel;
     }
 }
 
