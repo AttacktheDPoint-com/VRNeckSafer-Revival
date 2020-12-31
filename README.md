@@ -1,5 +1,5 @@
 VRNeckSafer tries to help to help virtual pilots flying in VR to not break their neck while trying to check their six.
-It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2 and SteamVR.
+It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2 with SteamVR.
 
 <img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv14.JPG"> 
 
@@ -7,8 +7,6 @@ It adds an angular offset to the current viewing angle by pressing a joystick bu
 
 Simply choose the Joystick/HOTAS and the two buttons you want to use for left and right offset and the required rotation angle.
 Thats it. It works with normal SteamVR (no Beta required).
-
-
 
 If you prefer adding up the offset angle with every button click, select the "Accumulative" option.
 
