@@ -19,6 +19,7 @@ namespace VRNeckSafer
         public int TransF;
         public bool Additiv;
         public bool Auto;
+        public int AutorotAngle;
         public int ActivationAngle;
         public int DeactivationAngle;
         public bool Use8WayHat;
@@ -34,6 +35,7 @@ namespace VRNeckSafer
             TransF = 0;
             Additiv = false;
             Auto = false;
+            AutorotAngle = -1;
             ActivationAngle = 70;
             DeactivationAngle = 60;
             Use8WayHat = false;
@@ -43,7 +45,10 @@ namespace VRNeckSafer
         {
             try
             {
-                return JsonConvert.DeserializeObject<Config>(File.ReadAllText(@".\VRNeckSafer.cfg"));
+                Config c= JsonConvert.DeserializeObject<Config>(File.ReadAllText(@".\VRNeckSafer.cfg"));
+                if (c.AutorotAngle == -1)
+                    c.AutorotAngle = c.Angle;
+                return c;
             }
             catch (Exception)
             {

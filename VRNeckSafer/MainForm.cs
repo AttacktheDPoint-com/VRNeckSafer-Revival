@@ -56,6 +56,7 @@ namespace VRNeckSafer
             transLRNUP.Value = conf.TransLR;
             additivRB.Checked = conf.Additiv;
             autoCB.Checked = conf.Auto;
+            autoRotNUD.Value = conf.AutorotAngle;
             activateNUP.Value = conf.ActivationAngle;
             deactivateNUD.Value = conf.DeactivationAngle;
             leftCB.Text = conf.LeftButton;
@@ -89,6 +90,9 @@ namespace VRNeckSafer
             label5.Enabled = enable;
             label6.Enabled = enable;
             label7.Enabled = enable;
+            label18.Enabled = enable;
+            label13.Enabled = enable;
+            autoRotNUD.Enabled = enable;
             activateNUP.Enabled = enable;
             deactivateNUD.Enabled = enable;
             if (!enable) auto_offset_angle = 0;
@@ -170,14 +174,30 @@ namespace VRNeckSafer
             conf.Angle = (int)angleNUD.Value;
             conf.WriteConfig();
         }
+        private void angleNUD_KeyUp(object sender, KeyEventArgs e)
+        {
+            conf.Angle = (int)angleNUD.Value;
+            conf.WriteConfig();
+        }
 
         private void activateNUP_ValueChanged(object sender, EventArgs e)
         {
             conf.ActivationAngle = (int)activateNUP.Value;
             conf.WriteConfig();
         }
+        private void activateNUP_KeyUp(object sender, KeyEventArgs e)
+        {
+            conf.ActivationAngle = (int)activateNUP.Value;
+            conf.WriteConfig();
+        }
 
         private void deactivateNUD_ValueChanged(object sender, EventArgs e)
+        {
+            conf.DeactivationAngle = (int)deactivateNUD.Value;
+            conf.WriteConfig();
+        }
+
+        private void deactivateNUD_KeyUp(object sender, KeyEventArgs e)
         {
             conf.DeactivationAngle = (int)deactivateNUD.Value;
             conf.WriteConfig();
@@ -198,6 +218,7 @@ namespace VRNeckSafer
             enableAuto(autoCB.Checked);
             conf.WriteConfig();
         }
+
         private void loopTimer_Tick(object sender, EventArgs e)
         {
 
@@ -250,7 +271,7 @@ namespace VRNeckSafer
 
                     if (hmdYaw > 0 && hmdYaw > activateNUP.Value)
                     {
-                        auto_offset_angle = (int)angleNUD.Value;
+                        auto_offset_angle = (int)autoRotNUD.Value;
                         trans_offset.X = -trans_offset_LR;
                         trans_offset.Z = trans_offset_F;
                     }
@@ -260,7 +281,7 @@ namespace VRNeckSafer
                     }
                     else if (hmdYaw < 0 && hmdYaw < -activateNUP.Value)
                     {
-                        auto_offset_angle = -(int)angleNUD.Value;
+                        auto_offset_angle = -(int)autoRotNUD.Value;
                         trans_offset.X = trans_offset_LR;
                         trans_offset.Z = trans_offset_F;
                     }
@@ -312,11 +333,38 @@ namespace VRNeckSafer
             trans_offset_F = (float)transFNUP.Value / 100F;
             conf.WriteConfig();
         }
+        private void transFNUP_KeyUp(object sender, KeyEventArgs e)
+        {
+            conf.TransF = (int)transFNUP.Value;
+            trans_offset_F = (float)transFNUP.Value / 100F;
+            conf.WriteConfig();
+        }
+
         private void transLRNUP_ValueChanged(object sender, EventArgs e)
         {
             conf.TransLR = (int)transLRNUP.Value;
             trans_offset_LR = (float)transLRNUP.Value / 100F;
             conf.WriteConfig();
         }
+
+        private void transLRNUP_KeyUp(object sender, KeyEventArgs e)
+        {
+            conf.TransLR = (int)transLRNUP.Value;
+            trans_offset_LR = (float)transLRNUP.Value / 100F;
+            conf.WriteConfig();
+        }
+
+        private void autoRotNUD_ValueChanged(object sender, EventArgs e)
+        {
+            conf.AutorotAngle = (int)autoRotNUD.Value;
+            conf.WriteConfig();
+        }
+
+        private void autoRotNUD_KeyUp(object sender, KeyEventArgs e)
+        {
+            conf.AutorotAngle = (int)autoRotNUD.Value;
+            conf.WriteConfig();
+        }
+
     }
 }

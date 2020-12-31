@@ -66,6 +66,9 @@
             this.translationBox1 = new System.Windows.Forms.GroupBox();
             this.rotationBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.autoRotNUD = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.angleNUD)).BeginInit();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deactivateNUD)).BeginInit();
@@ -75,6 +78,7 @@
             this.HMDYawBox.SuspendLayout();
             this.translationBox1.SuspendLayout();
             this.rotationBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.autoRotNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // JoystickCB
@@ -148,6 +152,7 @@
             0,
             0});
             this.angleNUD.ValueChanged += new System.EventHandler(this.angleNUD_ValueChanged);
+            this.angleNUD.KeyUp += new System.Windows.Forms.KeyEventHandler(this.angleNUD_KeyUp);
             // 
             // snapRB
             // 
@@ -174,17 +179,20 @@
             // 
             // groupAuto
             // 
+            this.groupAuto.Controls.Add(this.deactivateNUD);
+            this.groupAuto.Controls.Add(this.activateNUP);
+            this.groupAuto.Controls.Add(this.autoRotNUD);
+            this.groupAuto.Controls.Add(this.label13);
             this.groupAuto.Controls.Add(this.label7);
+            this.groupAuto.Controls.Add(this.label18);
             this.groupAuto.Controls.Add(this.label6);
             this.groupAuto.Controls.Add(this.label5);
             this.groupAuto.Controls.Add(this.label4);
             this.groupAuto.Controls.Add(this.autoCB);
-            this.groupAuto.Controls.Add(this.deactivateNUD);
-            this.groupAuto.Controls.Add(this.activateNUP);
-            this.groupAuto.Location = new System.Drawing.Point(131, 139);
+            this.groupAuto.Location = new System.Drawing.Point(131, 140);
             this.groupAuto.Name = "groupAuto";
             this.groupAuto.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupAuto.Size = new System.Drawing.Size(156, 87);
+            this.groupAuto.Size = new System.Drawing.Size(156, 96);
             this.groupAuto.TabIndex = 13;
             this.groupAuto.TabStop = false;
             this.groupAuto.Text = "Autorotate";
@@ -193,7 +201,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Enabled = false;
-            this.label7.Location = new System.Drawing.Point(131, 65);
+            this.label7.Location = new System.Drawing.Point(128, 74);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(25, 13);
             this.label7.TabIndex = 19;
@@ -203,7 +211,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Enabled = false;
-            this.label6.Location = new System.Drawing.Point(131, 38);
+            this.label6.Location = new System.Drawing.Point(128, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(25, 13);
             this.label6.TabIndex = 18;
@@ -213,7 +221,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Enabled = false;
-            this.label5.Location = new System.Drawing.Point(23, 63);
+            this.label5.Location = new System.Drawing.Point(23, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 17;
@@ -223,7 +231,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(35, 38);
+            this.label4.Location = new System.Drawing.Point(35, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 16;
@@ -233,7 +241,7 @@
             // 
             this.autoCB.AutoSize = true;
             this.autoCB.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoCB.Location = new System.Drawing.Point(5, 17);
+            this.autoCB.Location = new System.Drawing.Point(5, 15);
             this.autoCB.Name = "autoCB";
             this.autoCB.Size = new System.Drawing.Size(59, 17);
             this.autoCB.TabIndex = 15;
@@ -244,7 +252,7 @@
             // deactivateNUD
             // 
             this.deactivateNUD.Enabled = false;
-            this.deactivateNUD.Location = new System.Drawing.Point(90, 62);
+            this.deactivateNUD.Location = new System.Drawing.Point(90, 71);
             this.deactivateNUD.Maximum = new decimal(new int[] {
             369,
             0,
@@ -259,11 +267,12 @@
             0,
             0});
             this.deactivateNUD.ValueChanged += new System.EventHandler(this.deactivateNUD_ValueChanged);
+            this.deactivateNUD.KeyUp += new System.Windows.Forms.KeyEventHandler(this.deactivateNUD_KeyUp);
             // 
             // activateNUP
             // 
             this.activateNUP.Enabled = false;
-            this.activateNUP.Location = new System.Drawing.Point(90, 36);
+            this.activateNUP.Location = new System.Drawing.Point(90, 48);
             this.activateNUP.Maximum = new decimal(new int[] {
             360,
             0,
@@ -278,6 +287,7 @@
             0,
             0});
             this.activateNUP.ValueChanged += new System.EventHandler(this.activateNUP_ValueChanged);
+            this.activateNUP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.activateNUP_KeyUp);
             // 
             // label12
             // 
@@ -357,6 +367,7 @@
             this.transLRNUP.Size = new System.Drawing.Size(44, 20);
             this.transLRNUP.TabIndex = 25;
             this.transLRNUP.ValueChanged += new System.EventHandler(this.transLRNUP_ValueChanged);
+            this.transLRNUP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.transLRNUP_KeyUp);
             // 
             // transFNUP
             // 
@@ -365,6 +376,7 @@
             this.transFNUP.Size = new System.Drawing.Size(44, 20);
             this.transFNUP.TabIndex = 26;
             this.transFNUP.ValueChanged += new System.EventHandler(this.transFNUP_ValueChanged);
+            this.transFNUP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.transFNUP_KeyUp);
             // 
             // label14
             // 
@@ -457,18 +469,54 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(270, 225);
+            this.label1.Location = new System.Drawing.Point(270, 234);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 34;
-            this.label1.Text = "v1.4";
+            this.label1.Text = "v1.5";
+            // 
+            // autoRotNUD
+            // 
+            this.autoRotNUD.Location = new System.Drawing.Point(90, 25);
+            this.autoRotNUD.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.autoRotNUD.Name = "autoRotNUD";
+            this.autoRotNUD.Size = new System.Drawing.Size(38, 20);
+            this.autoRotNUD.TabIndex = 22;
+            this.autoRotNUD.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.autoRotNUD.ValueChanged += new System.EventHandler(this.autoRotNUD_ValueChanged);
+            this.autoRotNUD.KeyUp += new System.Windows.Forms.KeyEventHandler(this.autoRotNUD_KeyUp);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(128, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(25, 13);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "deg";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(58, 28);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(30, 13);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Rot.:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 238);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(297, 248);
             this.Controls.Add(this.rotationBox);
             this.Controls.Add(this.translationBox1);
             this.Controls.Add(this.HMDYawBox);
@@ -481,9 +529,10 @@
             this.Controls.Add(this.rightCB);
             this.Controls.Add(this.leftCB);
             this.Controls.Add(this.JoystickCB);
+            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(313, 277);
-            this.MinimumSize = new System.Drawing.Size(313, 277);
+            this.MaximumSize = new System.Drawing.Size(313, 287);
+            this.MinimumSize = new System.Drawing.Size(313, 287);
             this.Name = "MainForm";
             this.Text = "VRNeckSafer";
             ((System.ComponentModel.ISupportInitialize)(this.angleNUD)).EndInit();
@@ -499,6 +548,7 @@
             this.translationBox1.PerformLayout();
             this.rotationBox.ResumeLayout(false);
             this.rotationBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.autoRotNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,6 +592,9 @@
         private System.Windows.Forms.GroupBox translationBox1;
         private System.Windows.Forms.GroupBox rotationBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown autoRotNUD;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label18;
     }
 }
 
