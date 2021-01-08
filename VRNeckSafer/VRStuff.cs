@@ -42,18 +42,21 @@ namespace VRNeckSafer
 
         public void getHmdSeatedPositionOffset()
         {
-            system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseSeated, 0.0f, Poses);
-            Vector3 V1 = new Vector3(
-                Poses[0].mDeviceToAbsoluteTracking.m3,
-                Poses[0].mDeviceToAbsoluteTracking.m7,
-                Poses[0].mDeviceToAbsoluteTracking.m11);
+            if (OpenVR.Compositor.GetTrackingSpace() == ETrackingUniverseOrigin.TrackingUniverseSeated)
+            {
+                system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseSeated, 0.0f, Poses);
+                Vector3 V1 = new Vector3(
+                    Poses[0].mDeviceToAbsoluteTracking.m3,
+                    Poses[0].mDeviceToAbsoluteTracking.m7,
+                    Poses[0].mDeviceToAbsoluteTracking.m11);
 
-            system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseStanding, 0.0f, Poses);
-            Vector3 V2 = new Vector3(
-                Poses[0].mDeviceToAbsoluteTracking.m3,
-                Poses[0].mDeviceToAbsoluteTracking.m7,
-                Poses[0].mDeviceToAbsoluteTracking.m11);
-            deltaPos = Vector3.Subtract(V2, V1);
+                system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseStanding, 0.0f, Poses);
+                Vector3 V2 = new Vector3(
+                    Poses[0].mDeviceToAbsoluteTracking.m3,
+                    Poses[0].mDeviceToAbsoluteTracking.m7,
+                    Poses[0].mDeviceToAbsoluteTracking.m11);
+                deltaPos = Vector3.Subtract(V2, V1);
+            }
         }
 
         public bool HmdIsActive()
@@ -66,11 +69,12 @@ namespace VRNeckSafer
 
         public int getHmdYaw()
         {
-            system.GetDeviceToAbsoluteTrackingPose(ETrackingUniverseOrigin.TrackingUniverseSeated, 0.0f, Poses);
+           
+            system.GetDeviceToAbsoluteTrackingPose(OpenVR.Compositor.GetTrackingSpace(), 0.0f, Poses);
             HmdPose = Poses[0].mDeviceToAbsoluteTracking;
 
-            OpenVR.ChaperoneSetup.GetWorkingSeatedZeroPoseToRawTrackingPose(ref lll);
-            debugMsg = lll.m0 +" "+ lll.m1 + " " + lll.m2 + " " + lll.m3 + " " + lll.m4 ;
+ //           OpenVR.ChaperoneSetup.GetWorkingSeatedZeroPoseToRawTrackingPose(ref lll);
+//            debugMsg = lll.m0 +" "+ lll.m1 + " " + lll.m2 + " " + lll.m3 + " " + lll.m4 ;
 
             return (int) (Math.Round(Math.Atan2(HmdPose.m2, HmdPose.m10)* 180.0/Math.PI));
         }
