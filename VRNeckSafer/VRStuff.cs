@@ -21,7 +21,7 @@ namespace VRNeckSafer
         {
             var initError = EVRInitError.None;
 
-            system = OpenVR.Init(ref initError, EVRApplicationType.VRApplication_Utility);
+            system = OpenVR.Init(ref initError, EVRApplicationType.VRApplication_Overlay);
 
             if (initError != EVRInitError.None)
                 return;

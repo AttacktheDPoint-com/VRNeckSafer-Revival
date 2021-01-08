@@ -257,10 +257,8 @@ namespace VRNeckSafer
 
                 int hmdYaw = -(vr.getHmdYaw() - hmdYawOffset + sum_offset_angle);
 
-                if (hmdYaw < -180)
-                    hmdYaw += 360;
-                if (hmdYaw > 180)
-                    hmdYaw -= 360;
+                while (hmdYaw < -180) hmdYaw += 360;
+                while (hmdYaw > 180) hmdYaw -= 360;
 
                 if (vr.HmdIsActive())
                     HMDYawLabel.Text = "HMD yaw: " + hmdYaw + " deg";
