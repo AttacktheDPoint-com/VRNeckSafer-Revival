@@ -30,16 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.JoystickCB = new System.Windows.Forms.ComboBox();
-            this.leftCB = new System.Windows.Forms.ComboBox();
-            this.rightCB = new System.Windows.Forms.ComboBox();
-            this.lable1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LeftButtonLabel = new System.Windows.Forms.Label();
+            this.RightButtonLabel = new System.Windows.Forms.Label();
             this.angleNUD = new System.Windows.Forms.NumericUpDown();
             this.snapRB = new System.Windows.Forms.RadioButton();
             this.additivRB = new System.Windows.Forms.RadioButton();
             this.groupAuto = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.deactivateNUD = new System.Windows.Forms.NumericUpDown();
             this.activateNUP = new System.Windows.Forms.NumericUpDown();
             this.autoRotNUD = new System.Windows.Forms.NumericUpDown();
@@ -53,7 +50,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.resetCB = new System.Windows.Forms.ComboBox();
             this.zeroBT = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.loopTimer = new System.Windows.Forms.Timer(this.components);
@@ -70,8 +66,11 @@
             this.rotationBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.modeLB = new System.Windows.Forms.Label();
-            this.tempDisCB = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.SetLeftButton = new System.Windows.Forms.Button();
+            this.SetRightButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.angleNUD)).BeginInit();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deactivateNUD)).BeginInit();
@@ -82,61 +81,26 @@
             this.HMDYawBox.SuspendLayout();
             this.translationBox1.SuspendLayout();
             this.rotationBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // JoystickCB
+            // LeftButtonLabel
             // 
-            this.JoystickCB.FormattingEnabled = true;
-            this.JoystickCB.Location = new System.Drawing.Point(11, 25);
-            this.JoystickCB.Name = "JoystickCB";
-            this.JoystickCB.Size = new System.Drawing.Size(135, 21);
-            this.JoystickCB.TabIndex = 11;
-            this.JoystickCB.SelectedIndexChanged += new System.EventHandler(this.JoystickCB_SelectedIndexChanged);
+            this.LeftButtonLabel.AutoSize = true;
+            this.LeftButtonLabel.Location = new System.Drawing.Point(31, 16);
+            this.LeftButtonLabel.Name = "LeftButtonLabel";
+            this.LeftButtonLabel.Size = new System.Drawing.Size(58, 13);
+            this.LeftButtonLabel.TabIndex = 6;
+            this.LeftButtonLabel.Text = "Left button";
             // 
-            // leftCB
+            // RightButtonLabel
             // 
-            this.leftCB.FormattingEnabled = true;
-            this.leftCB.Location = new System.Drawing.Point(152, 25);
-            this.leftCB.Name = "leftCB";
-            this.leftCB.Size = new System.Drawing.Size(64, 21);
-            this.leftCB.TabIndex = 2;
-            this.leftCB.SelectedIndexChanged += new System.EventHandler(this.leftCB_SelectedIndexChanged);
-            // 
-            // rightCB
-            // 
-            this.rightCB.FormattingEnabled = true;
-            this.rightCB.Location = new System.Drawing.Point(222, 25);
-            this.rightCB.Name = "rightCB";
-            this.rightCB.Size = new System.Drawing.Size(64, 21);
-            this.rightCB.TabIndex = 3;
-            this.rightCB.SelectedIndexChanged += new System.EventHandler(this.rightCB_SelectedIndexChanged);
-            // 
-            // lable1
-            // 
-            this.lable1.AutoSize = true;
-            this.lable1.Location = new System.Drawing.Point(13, 9);
-            this.lable1.Name = "lable1";
-            this.lable1.Size = new System.Drawing.Size(45, 13);
-            this.lable1.TabIndex = 4;
-            this.lable1.Text = "Joystick";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(152, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Left button";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(222, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Right button";
+            this.RightButtonLabel.AutoSize = true;
+            this.RightButtonLabel.Location = new System.Drawing.Point(31, 53);
+            this.RightButtonLabel.Name = "RightButtonLabel";
+            this.RightButtonLabel.Size = new System.Drawing.Size(65, 13);
+            this.RightButtonLabel.TabIndex = 7;
+            this.RightButtonLabel.Text = "Right button";
             // 
             // angleNUD
             // 
@@ -161,7 +125,7 @@
             // 
             this.snapRB.AutoSize = true;
             this.snapRB.Checked = true;
-            this.snapRB.Location = new System.Drawing.Point(12, 185);
+            this.snapRB.Location = new System.Drawing.Point(150, 103);
             this.snapRB.Name = "snapRB";
             this.snapRB.Size = new System.Drawing.Size(50, 17);
             this.snapRB.TabIndex = 1;
@@ -172,7 +136,7 @@
             // additivRB
             // 
             this.additivRB.AutoSize = true;
-            this.additivRB.Location = new System.Drawing.Point(12, 208);
+            this.additivRB.Location = new System.Drawing.Point(214, 103);
             this.additivRB.Name = "additivRB";
             this.additivRB.Size = new System.Drawing.Size(89, 17);
             this.additivRB.TabIndex = 12;
@@ -183,7 +147,6 @@
             // groupAuto
             // 
             this.groupAuto.Controls.Add(this.label20);
-            this.groupAuto.Controls.Add(this.tempDisCB);
             this.groupAuto.Controls.Add(this.deactivateNUD);
             this.groupAuto.Controls.Add(this.activateNUP);
             this.groupAuto.Controls.Add(this.autoRotNUD);
@@ -194,13 +157,23 @@
             this.groupAuto.Controls.Add(this.label5);
             this.groupAuto.Controls.Add(this.label4);
             this.groupAuto.Controls.Add(this.autoCB);
-            this.groupAuto.Location = new System.Drawing.Point(131, 133);
+            this.groupAuto.Location = new System.Drawing.Point(12, 316);
             this.groupAuto.Name = "groupAuto";
             this.groupAuto.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupAuto.Size = new System.Drawing.Size(156, 119);
             this.groupAuto.TabIndex = 13;
             this.groupAuto.TabStop = false;
-            this.groupAuto.Text = "Autorotate";
+            this.groupAuto.Text = "Automaric activation";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Enabled = false;
+            this.label20.Location = new System.Drawing.Point(47, 96);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(39, 13);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "freeze:";
             // 
             // deactivateNUD
             // 
@@ -360,15 +333,6 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "or";
             // 
-            // resetCB
-            // 
-            this.resetCB.FormattingEnabled = true;
-            this.resetCB.Location = new System.Drawing.Point(81, 53);
-            this.resetCB.Name = "resetCB";
-            this.resetCB.Size = new System.Drawing.Size(64, 21);
-            this.resetCB.TabIndex = 23;
-            this.resetCB.SelectedIndexChanged += new System.EventHandler(this.resetCB_SelectedIndexChanged);
-            // 
             // zeroBT
             // 
             this.zeroBT.Location = new System.Drawing.Point(4, 52);
@@ -405,6 +369,11 @@
             // transLRNUP
             // 
             this.transLRNUP.Location = new System.Drawing.Point(43, 16);
+            this.transLRNUP.Maximum = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
             this.transLRNUP.Name = "transLRNUP";
             this.transLRNUP.Size = new System.Drawing.Size(44, 20);
             this.transLRNUP.TabIndex = 25;
@@ -414,6 +383,11 @@
             // transFNUP
             // 
             this.transFNUP.Location = new System.Drawing.Point(43, 42);
+            this.transFNUP.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.transFNUP.Name = "transFNUP";
             this.transFNUP.Size = new System.Drawing.Size(44, 20);
             this.transFNUP.TabIndex = 26;
@@ -462,11 +436,10 @@
             this.HMDYawBox.Controls.Add(this.label11);
             this.HMDYawBox.Controls.Add(this.label12);
             this.HMDYawBox.Controls.Add(this.zeroBT);
-            this.HMDYawBox.Controls.Add(this.resetCB);
             this.HMDYawBox.Controls.Add(this.label10);
-            this.HMDYawBox.Location = new System.Drawing.Point(131, 51);
+            this.HMDYawBox.Location = new System.Drawing.Point(12, 12);
             this.HMDYawBox.Name = "HMDYawBox";
-            this.HMDYawBox.Size = new System.Drawing.Size(156, 79);
+            this.HMDYawBox.Size = new System.Drawing.Size(402, 79);
             this.HMDYawBox.TabIndex = 31;
             this.HMDYawBox.TabStop = false;
             // 
@@ -474,7 +447,7 @@
             // 
             this.HMDYawLabel.AutoSize = true;
             this.HMDYawLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HMDYawLabel.Location = new System.Drawing.Point(27, 0);
+            this.HMDYawLabel.Location = new System.Drawing.Point(31, 9);
             this.HMDYawLabel.Name = "HMDYawLabel";
             this.HMDYawLabel.Size = new System.Drawing.Size(101, 13);
             this.HMDYawLabel.TabIndex = 27;
@@ -488,7 +461,7 @@
             this.translationBox1.Controls.Add(this.label14);
             this.translationBox1.Controls.Add(this.label16);
             this.translationBox1.Controls.Add(this.label15);
-            this.translationBox1.Location = new System.Drawing.Point(11, 102);
+            this.translationBox1.Location = new System.Drawing.Point(40, 69);
             this.translationBox1.Name = "translationBox1";
             this.translationBox1.Size = new System.Drawing.Size(114, 74);
             this.translationBox1.TabIndex = 32;
@@ -500,7 +473,7 @@
             this.rotationBox.Controls.Add(this.angleNUD);
             this.rotationBox.Controls.Add(this.label8);
             this.rotationBox.Controls.Add(this.label9);
-            this.rotationBox.Location = new System.Drawing.Point(11, 51);
+            this.rotationBox.Location = new System.Drawing.Point(119, 21);
             this.rotationBox.Name = "rotationBox";
             this.rotationBox.Size = new System.Drawing.Size(114, 51);
             this.rotationBox.TabIndex = 33;
@@ -511,7 +484,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(264, 253);
+            this.label1.Location = new System.Drawing.Point(389, 462);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(28, 13);
@@ -522,53 +495,83 @@
             // modeLB
             // 
             this.modeLB.AutoSize = true;
-            this.modeLB.Location = new System.Drawing.Point(6, 252);
+            this.modeLB.Location = new System.Drawing.Point(5, 461);
             this.modeLB.Name = "modeLB";
             this.modeLB.Size = new System.Drawing.Size(86, 13);
             this.modeLB.TabIndex = 35;
             this.modeLB.Text = "(Mode: standing)";
             // 
-            // tempDisCB
+            // SetLeftButton
             // 
-            this.tempDisCB.FormattingEnabled = true;
-            this.tempDisCB.Location = new System.Drawing.Point(89, 93);
-            this.tempDisCB.Name = "tempDisCB";
-            this.tempDisCB.Size = new System.Drawing.Size(64, 21);
-            this.tempDisCB.TabIndex = 28;
-            this.tempDisCB.SelectedIndexChanged += new System.EventHandler(this.tempDisCB_SelectedIndexChanged);
-            this.tempDisCB.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tempDisCB_KeyUp);
+            this.SetLeftButton.Location = new System.Drawing.Point(252, 16);
+            this.SetLeftButton.Name = "SetLeftButton";
+            this.SetLeftButton.Size = new System.Drawing.Size(36, 23);
+            this.SetLeftButton.TabIndex = 36;
+            this.SetLeftButton.Text = "Set";
+            this.SetLeftButton.UseVisualStyleBackColor = true;
+            this.SetLeftButton.Click += new System.EventHandler(this.SetLeftButton_Click);
             // 
-            // label20
+            // SetRightButton
             // 
-            this.label20.AutoSize = true;
-            this.label20.Enabled = false;
-            this.label20.Location = new System.Drawing.Point(47, 96);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(39, 13);
-            this.label20.TabIndex = 29;
-            this.label20.Text = "freeze:";
+            this.SetRightButton.Location = new System.Drawing.Point(252, 48);
+            this.SetRightButton.Name = "SetRightButton";
+            this.SetRightButton.Size = new System.Drawing.Size(36, 23);
+            this.SetRightButton.TabIndex = 37;
+            this.SetRightButton.Text = "Set";
+            this.SetRightButton.UseVisualStyleBackColor = true;
+            this.SetRightButton.Click += new System.EventHandler(this.SetRightButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.translationBox1);
+            this.groupBox1.Controls.Add(this.rotationBox);
+            this.groupBox1.Controls.Add(this.LeftButtonLabel);
+            this.groupBox1.Controls.Add(this.SetLeftButton);
+            this.groupBox1.Controls.Add(this.additivRB);
+            this.groupBox1.Controls.Add(this.SetRightButton);
+            this.groupBox1.Controls.Add(this.snapRB);
+            this.groupBox1.Controls.Add(this.RightButtonLabel);
+            this.groupBox1.Location = new System.Drawing.Point(12, 121);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(402, 149);
+            this.groupBox1.TabIndex = 38;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Manual activation";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 24);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "L";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 24);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "R";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 268);
+            this.ClientSize = new System.Drawing.Size(445, 483);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.modeLB);
-            this.Controls.Add(this.rotationBox);
-            this.Controls.Add(this.translationBox1);
             this.Controls.Add(this.HMDYawBox);
             this.Controls.Add(this.groupAuto);
-            this.Controls.Add(this.additivRB);
-            this.Controls.Add(this.snapRB);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lable1);
-            this.Controls.Add(this.rightCB);
-            this.Controls.Add(this.leftCB);
-            this.Controls.Add(this.JoystickCB);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(313, 307);
+            this.MaximumSize = new System.Drawing.Size(3130, 3070);
             this.MinimumSize = new System.Drawing.Size(313, 307);
             this.Name = "MainForm";
             this.Text = "VRNeckSafer";
@@ -586,19 +589,16 @@
             this.translationBox1.PerformLayout();
             this.rotationBox.ResumeLayout(false);
             this.rotationBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox JoystickCB;
-        private System.Windows.Forms.ComboBox leftCB;
-        private System.Windows.Forms.ComboBox rightCB;
-        private System.Windows.Forms.Label lable1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LeftButtonLabel;
+        private System.Windows.Forms.Label RightButtonLabel;
         private System.Windows.Forms.NumericUpDown angleNUD;
         private System.Windows.Forms.RadioButton snapRB;
         private System.Windows.Forms.RadioButton additivRB;
@@ -617,7 +617,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox resetCB;
         private System.Windows.Forms.NumericUpDown transLRNUP;
         private System.Windows.Forms.NumericUpDown transFNUP;
         private System.Windows.Forms.Label label14;
@@ -634,7 +633,11 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label modeLB;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox tempDisCB;
+        private System.Windows.Forms.Button SetLeftButton;
+        private System.Windows.Forms.Button SetRightButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -8,12 +8,31 @@ using System.Threading.Tasks;
 
 namespace VRNeckSafer
 {
-    class Config
+    public class ButtonConfig
     {
-        public String JoystickGUID;
-        public String LeftButton;
-        public String RightButton;
-        public String ResetButton;
+        public string JoystickGUID;
+        public string Button;
+        public string ModJoystickGUID;
+        public string ModButton;
+        public bool UseModifier;
+        public ButtonConfig()
+        {
+            JoystickGUID = "none";
+            Button = "none";
+            ModJoystickGUID = "none";
+            ModButton = "none";
+            UseModifier = false;
+        }
+    }
+    public class Config
+    {
+        public ButtonConfig LeftButton;
+        public ButtonConfig RightButton;
+        public ButtonConfig ResetButton;
+        public ButtonConfig HoldButton1;
+        public ButtonConfig HoldButton2;
+        public ButtonConfig HoldButton3;
+        public ButtonConfig HoldButton4;
         public int Angle;
         public int TransLR;
         public int TransF;
@@ -22,16 +41,17 @@ namespace VRNeckSafer
         public int AutorotAngle;
         public int ActivationAngle;
         public int DeactivationAngle;
-        public String autoDisableButton;
         public bool Use8WayHat;
 
         public Config()
         {
-            JoystickGUID = "none";
-            LeftButton = "none";
-            RightButton = "none";
-            ResetButton = "none";
-            autoDisableButton = "none";
+            LeftButton = new ButtonConfig();
+            RightButton = new ButtonConfig();
+            ResetButton = new ButtonConfig();
+            HoldButton1 = new ButtonConfig();
+            HoldButton2 = new ButtonConfig();
+            HoldButton3 = new ButtonConfig();
+            HoldButton4 = new ButtonConfig();
             Angle = 30;
             TransLR = 0;
             TransF = 0;
