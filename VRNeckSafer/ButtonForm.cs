@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VRNeckSafer
@@ -42,15 +35,10 @@ namespace VRNeckSafer
 
             for (int i = 0; i < mf.js.ll.Count; i++)
             {
-
                 MainDeviceComboBox.Items.Add(mf.js.ll[i].InstanceName);
                 ModifierDeviceComboBox.Items.Add(mf.js.ll[i].InstanceName);
-                //                if (js.ll[i].InstanceGuid.ToString() == conf.JoystickGUID)
-                //                {
-                //                    JoystickCB.SelectedIndex = i;
-                //                    js.setJoystick(js.ll[i].InstanceGuid);
-                //                }
             }
+
             int Index = mf.js.IndexFromGuid(butconf.JoystickGUID);
             MainDeviceComboBox.SelectedIndex = Index + 1;
             FillButtonComboBox(Index, MainButtonComboBox);
@@ -97,7 +85,7 @@ namespace VRNeckSafer
         {
             sf = new ScanForm(this);
             sf.StartPosition = FormStartPosition.Manual;
-            sf.Top = Top+10;
+            sf.Top = Top + 10;
             sf.Left = Left;
 
             mf.js.InitScan();
@@ -184,7 +172,7 @@ namespace VRNeckSafer
             label3.Enabled = UseModifierCheckBox.Checked;
             ModifierDeviceComboBox.Enabled = UseModifierCheckBox.Checked;
             ModifierButtonComboBox.Enabled = UseModifierCheckBox.Checked;
-            ModifierScanButton.Enabled= UseModifierCheckBox.Checked;
+            ModifierScanButton.Enabled = UseModifierCheckBox.Checked;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -217,7 +205,7 @@ namespace VRNeckSafer
 
         private void MainDeviceComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            FillButtonComboBox(MainDeviceComboBox.SelectedIndex-1, MainButtonComboBox);
+            FillButtonComboBox(MainDeviceComboBox.SelectedIndex - 1, MainButtonComboBox);
             MainButtonComboBox.Text = "none";
         }
 

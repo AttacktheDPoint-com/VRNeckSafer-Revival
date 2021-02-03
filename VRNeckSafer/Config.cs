@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VRNeckSafer
 {
@@ -68,11 +65,11 @@ namespace VRNeckSafer
             Use8WayHat = false;
             GameMode = "Auto";
             AppMode = "Overlay";
-            PosCompensation = "when seated" ;
+            PosCompensation = "when seated";
             StartMinimized = false;
             MinimizeToTray = false;
             AutoSteps = new List<int[]>();
-        }   
+        }
 
         static public Config ReadConfig()
         {
@@ -84,7 +81,7 @@ namespace VRNeckSafer
                     configfilename = @".\" + args[1];
 
                 Config c = JsonConvert.DeserializeObject<Config>(File.ReadAllText(configfilename));
-                if (c.AutoSteps.Count==0) c.AutoSteps.Add(new int[5] {90,80,10,0,0});
+                if (c.AutoSteps.Count == 0) c.AutoSteps.Add(new int[5] { 90, 80, 10, 0, 0 });
                 return c;
             }
             catch (Exception)

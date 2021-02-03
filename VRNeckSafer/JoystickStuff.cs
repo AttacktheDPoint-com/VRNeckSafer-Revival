@@ -1,10 +1,6 @@
-﻿using System;
+﻿using SharpDX.DirectInput;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpDX.DirectInput;
-using System.IO;
 
 namespace VRNeckSafer
 {
@@ -21,7 +17,7 @@ namespace VRNeckSafer
         DirectInput DInput;
         public IList<DeviceInstance> ll;
         public List<Joystick> Sticks;
-//        public Joystick Stick;
+        //        public Joystick Stick;
         public JoyBut jb;
 
         public List<bool[]> LastButtons;
@@ -35,7 +31,7 @@ namespace VRNeckSafer
 
         public string NameFromGuid(string guid)
         {
-            if (guid=="none" ) return guid;
+            if (guid == "none") return guid;
             string name = "invalid";
             for (int i = 0; i < ll.Count; i++)
             {
@@ -49,7 +45,7 @@ namespace VRNeckSafer
         }
         public int IndexFromGuid(string guid)
         {
-            int index=-1;
+            int index = -1;
             for (int i = 0; i < ll.Count; i++)
             {
                 if (ll[i].InstanceGuid.ToString() == guid)
@@ -82,11 +78,11 @@ namespace VRNeckSafer
             bool pressed = IsPressed(use8wayhat, butconf.JoystickGUID, butconf.Button);
             if (butconf.UseModifier)
                 pressed = pressed && IsPressed(use8wayhat, butconf.ModJoystickGUID, butconf.ModButton);
-            return butconf.Invert?!pressed:pressed;
+            return butconf.Invert ? !pressed : pressed;
         }
         public bool IsPressed(bool use8wayhat, string JoystickGUID, string Button)
         {
-            int j, b=-1, p=-1;
+            int j, b = -1, p = -1;
 
             j = IndexFromGuid(JoystickGUID);
             if (j == -1) return false;
@@ -132,8 +128,8 @@ namespace VRNeckSafer
             {
                 if (State.PointOfViewControllers[p] == -1) return false;
                 if (use8wayhat)
-                     return State.PointOfViewControllers[p] == b;
-                
+                    return State.PointOfViewControllers[p] == b;
+
                 return Math.Abs(State.PointOfViewControllers[p] - b) < 5000;
             }
         }

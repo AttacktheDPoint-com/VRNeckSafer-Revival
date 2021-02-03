@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpDX;
-using Valve.VR;
+﻿using SharpDX;
+using System;
 using System.Windows.Forms;
-using System.Threading;
+using Valve.VR;
 
 namespace VRNeckSafer
 {
@@ -44,7 +39,7 @@ namespace VRNeckSafer
             if (initError != EVRInitError.None)
             {
                 MessageBox.Show("Unable to connect to SteamVR/OpenVR", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                System.Environment.Exit(0);               
+                System.Environment.Exit(0);
             }
         }
 
@@ -119,7 +114,7 @@ namespace VRNeckSafer
 
             double Angle = a * Math.PI / 180.0 + deltaRot;
 
-            HmdMatrix34_t resetCenter = new HmdMatrix34_t() 
+            HmdMatrix34_t resetCenter = new HmdMatrix34_t()
             { m0 = 1, m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 1, m6 = 0, m7 = 0, m8 = 0, m9 = 0, m10 = 1, m11 = 0 };
 
             setChaperone(resetCenter);
@@ -140,11 +135,11 @@ namespace VRNeckSafer
             Vector3 Xyz = Vector3.Subtract(oldHmdXyz, newHmdXyz);
 
             Xyz = Vector3.Add(Xyz, deltaPos);
- 
+
             float c = (float)Math.Cos(Angle);
             float s = (float)Math.Sin(Angle);
 
-            HmdMatrix34_t rotatedCenter = new HmdMatrix34_t() 
+            HmdMatrix34_t rotatedCenter = new HmdMatrix34_t()
             { m0 = c, m1 = 0, m2 = s, m3 = Xyz.X, m4 = 0, m5 = 1, m6 = 0, m7 = Xyz.Y, m8 = -s, m9 = 0, m10 = c, m11 = Xyz.Z };
 
             setChaperone(rotatedCenter);
