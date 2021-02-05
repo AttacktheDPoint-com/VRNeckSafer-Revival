@@ -1,19 +1,21 @@
 VRNeckSafer tries to help to help virtual pilots flying in VR to not break their neck while trying to check their six.
 It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2 with SteamVR.
 
-<img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv16.JPG"> 
+<img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv20.JPG"> 
 
 **How to use it:**
 
-Simply choose the Joystick/HOTAS and the two buttons you want to use for left and right offset and the required rotation angle.
+Simply choose the two joystick/HOTAS buttons you want to use for left and right offset and the required rotation angle and set the Reset button as shown on the app.
+When in the game, press the assigned reset button to calibrate.
 Thats it. It works with normal SteamVR (no Beta required).
+
 
 If you prefer adding up the offset angle with every button click, select the "Accumulative" option.
 
 If you want to move your head position a few centimeters when using snap view (e.g. to look around your seat) use the Translation feature.
-For this to work properly you have to (re)set your neutral head angle (HMD yaw) once, so that the app knows which direction "L/R" and "Fwd" are.
- 
-Also, as an experimental feature, there is an "Autorotate" setting that can be enabled. Here the Offset angle is automatically activated when turning your head over a defined activation angle and deactivated when below a deactivation angle. No joystick buttons required. :) But don't forget to reset HMD yaw once!
+
+Enable the "Autorotation" feature to automatically activate the offset when turning your head over defined activation angles and deactivated when below a deactivation angle. No joystick buttons required.
+This can be done in several steps. To temporarily inhibit autorotation use the Hold buttons.
 
 **Update v1.1:**
 
@@ -47,13 +49,23 @@ Separate rotation angles for snap and autorotation
 Compatibility to other major combat sim. 
 Added a "temporary freeze" button for autorotation 
 
-I'll stay with the zipped folder this time, the standalone versions gave too much trouble with false av alerts...  There is no difference in usage.
-It's still a good idea to use the same button for HMD yaw reset and the in game "Default VR view"!
-Also, better keep the HMD standard orientation (arrow on ground on the SteamVR plains) close to your normal front direction. (the HMD yaw reset function trys to compensate, but big angular differences are problematic)
+**Update v2.0:**
 
+new features/changes:
++ seperate joysticks for each button
++ modifiers
++ several steps for autorotate 
++ buttons can be scanned/recognized 
++ More than one Hold button
++ buttons can be inverted
++ buttons can toggle
++ only a single instance allowed
++ start minimized
++ minimize to tray
++ config file can be added as parameter
++ options to fiddle with: 
+   force seated/standing mode
+   position compensation
+   app mode can be "Background" (requires SteamVR to already run) or "Overlay" (starts SteamVR on its own)
  
-Known issues:
-
-problem with  Rift CV1 (no reaction after game is launched?)
-problem with Vive Pro (View point centers on base station?)
-If anyone got these running, please let me know! 
+   
