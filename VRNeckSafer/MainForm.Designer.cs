@@ -370,7 +370,7 @@
             this.VersionLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.VersionLabel.Size = new System.Drawing.Size(34, 13);
             this.VersionLabel.TabIndex = 34;
-            this.VersionLabel.Text = "v2.01";
+            this.VersionLabel.Text = "v2.02";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // modeLB
