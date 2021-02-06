@@ -136,8 +136,8 @@ namespace VRNeckSafer
         private void additivRB_CheckedChanged(object sender, EventArgs e)
         {
             conf.Additiv = additivRB.Checked;
-            groupAuto.Enabled = !additivRB.Checked;
-            HMDYawBox.Enabled = !additivRB.Checked;
+ //           groupAuto.Enabled = !additivRB.Checked;
+ //           HMDYawBox.Enabled = !additivRB.Checked;
             transLRNUP.Enabled = !additivRB.Checked;
             transFNUP.Enabled = !additivRB.Checked;
             label14.Enabled = !additivRB.Checked;
@@ -165,7 +165,7 @@ namespace VRNeckSafer
             else
             {
                 b.ForeColor = SystemColors.ControlText;
-                b.BackColor = SystemColors.Control;
+                b.BackColor = SystemColors.ButtonFace;
             }
             return pressed;
         }
@@ -212,13 +212,28 @@ namespace VRNeckSafer
                 modeLB.Text = "(Mode: standing)";
             }
 
+            int hmdYaw = -(vr.getHmdYaw() + sum_offset_angle);
+
+            while (hmdYaw < -180) hmdYaw += 360;
+            while (hmdYaw > 180) hmdYaw -= 360;
+
+            if (vr.HmdIsActive())
+                HMDYawLabel.Text = "HMD yaw: " + hmdYaw + " deg";
+            else
+                HMDYawLabel.Text = "HMD yaw: standby";
+
+            if (checkButtonPress(SetResetButton, conf.ResetButton))
+            {
+                vr.getHmdSeatedPositionOffset();
+                vr.getHmdYawOffset();
+            }
+
             if (additivRB.Checked)
             {
                 if (l_pressed && !lastpressed)
                     joy_offset_angle -= (int)angleNUD.Value;
                 if (r_pressed && !lastpressed)
                     joy_offset_angle += (int)angleNUD.Value;
-                HMDYawLabel.Text = "HMD yaw: -- deg";
             }
             else
             {
@@ -240,27 +255,13 @@ namespace VRNeckSafer
                     trans_offset.X = 0;
                     trans_offset.Z = 0;
                 }
-                if (checkButtonPress(SetResetButton, conf.ResetButton))
-                {
-                    vr.getHmdSeatedPositionOffset();
-                    vr.getHmdYawOffset();
-                }
-
-                int hmdYaw = -(vr.getHmdYaw() + sum_offset_angle);
-
-                while (hmdYaw < -180) hmdYaw += 360;
-                while (hmdYaw > 180) hmdYaw -= 360;
-
-                if (vr.HmdIsActive())
-                    HMDYawLabel.Text = "HMD yaw: " + hmdYaw + " deg";
-                else
-                    HMDYawLabel.Text = "HMD yaw: standby";
-
-                if (autoCB.Checked && !autofrozen)
-                {
-                    calcAutoRotAndTrans(hmdYaw, ref auto_offset_angle, ref trans_offset);
-                }
             }
+
+            if (autoCB.Checked && !autofrozen)
+            {
+                calcAutoRotAndTrans(hmdYaw, ref auto_offset_angle, ref trans_offset);
+            }
+
 
             sum_offset_angle = joy_offset_angle + auto_offset_angle;
 
@@ -697,6 +698,5 @@ namespace VRNeckSafer
             conf.WriteConfig();
             setMenuCheckmarks();
         }
-
     }
 }

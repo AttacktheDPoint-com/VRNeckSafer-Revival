@@ -38,6 +38,11 @@
             this.SetHoldButton1 = new System.Windows.Forms.Button();
             this.autoCB = new System.Windows.Forms.CheckBox();
             this.AutorotGridView = new System.Windows.Forms.DataGridView();
+            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -95,11 +100,6 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutorotGridView)).BeginInit();
             this.HMDYawBox.SuspendLayout();
@@ -213,6 +213,55 @@
             this.AutorotGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.AutorotGridView_RowsAdded);
             this.AutorotGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.AutorotGridView_RowsRemoved);
             // 
+            // act
+            // 
+            this.act.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.act.Frozen = true;
+            this.act.HeaderText = "act";
+            this.act.Name = "act";
+            this.act.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.act.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.act.ToolTipText = "Activation angle";
+            this.act.Width = 30;
+            // 
+            // deact
+            // 
+            this.deact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.deact.Frozen = true;
+            this.deact.HeaderText = "deact";
+            this.deact.Name = "deact";
+            this.deact.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.deact.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.deact.ToolTipText = "Deactivation angle (< act and > previous act)";
+            this.deact.Width = 30;
+            // 
+            // rot
+            // 
+            this.rot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.rot.Frozen = true;
+            this.rot.HeaderText = "rot";
+            this.rot.Name = "rot";
+            this.rot.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.rot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.rot.ToolTipText = "Rotation angle";
+            this.rot.Width = 30;
+            // 
+            // LR
+            // 
+            this.LR.Frozen = true;
+            this.LR.HeaderText = "L/R";
+            this.LR.Name = "LR";
+            this.LR.ToolTipText = "Translation Left/Right (<40cm)";
+            this.LR.Width = 30;
+            // 
+            // Fwd
+            // 
+            this.Fwd.Frozen = true;
+            this.Fwd.HeaderText = "Fwd";
+            this.Fwd.Name = "Fwd";
+            this.Fwd.ToolTipText = "Translation to front (< 20cm)";
+            this.Fwd.Width = 50;
+            // 
             // AddButton
             // 
             this.AddButton.Location = new System.Drawing.Point(156, 18);
@@ -239,9 +288,9 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(8, 42);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(235, 13);
+            this.label12.Size = new System.Drawing.Size(236, 13);
             this.label12.TabIndex = 26;
-            this.label12.Text = "Set Reset button to the same button as in game:";
+            this.label12.Text = "Set Reset Button to the same button as in game:";
             // 
             // label11
             // 
@@ -251,7 +300,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(137, 13);
             this.label11.TabIndex = 25;
-            this.label11.Text = "-  IL-2:  \"Defaulr VR View\"  ";
+            this.label11.Text = "-  IL-2:  \"Default VR View\"  ";
             // 
             // label10
             // 
@@ -319,9 +368,9 @@
             this.VersionLabel.Location = new System.Drawing.Point(237, 470);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.VersionLabel.Size = new System.Drawing.Size(28, 13);
+            this.VersionLabel.Size = new System.Drawing.Size(34, 13);
             this.VersionLabel.TabIndex = 34;
-            this.VersionLabel.Text = "v2.0";
+            this.VersionLabel.Text = "v2.01";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // modeLB
@@ -542,7 +591,7 @@
             this.SetRightButton.Size = new System.Drawing.Size(72, 23);
             this.SetRightButton.TabIndex = 37;
             this.SetRightButton.Text = "Set Button";
-            this.SetRightButton.UseVisualStyleBackColor = true;
+            this.SetRightButton.UseVisualStyleBackColor = false;
             this.SetRightButton.Click += new System.EventHandler(this.SetRightButton_Click);
             // 
             // RightLabel
@@ -756,55 +805,6 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // act
-            // 
-            this.act.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.act.Frozen = true;
-            this.act.HeaderText = "act";
-            this.act.Name = "act";
-            this.act.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.act.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.act.ToolTipText = "Activation angle";
-            this.act.Width = 30;
-            // 
-            // deact
-            // 
-            this.deact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.deact.Frozen = true;
-            this.deact.HeaderText = "deact";
-            this.deact.Name = "deact";
-            this.deact.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.deact.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.deact.ToolTipText = "Deactivation angle (< act and > previous act)";
-            this.deact.Width = 30;
-            // 
-            // rot
-            // 
-            this.rot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.rot.Frozen = true;
-            this.rot.HeaderText = "rot";
-            this.rot.Name = "rot";
-            this.rot.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.rot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.rot.ToolTipText = "Rotation angle";
-            this.rot.Width = 30;
-            // 
-            // LR
-            // 
-            this.LR.Frozen = true;
-            this.LR.HeaderText = "L/R";
-            this.LR.Name = "LR";
-            this.LR.ToolTipText = "Translation Left/Right (<40cm)";
-            this.LR.Width = 30;
-            // 
-            // Fwd
-            // 
-            this.Fwd.Frozen = true;
-            this.Fwd.HeaderText = "Fwd";
-            this.Fwd.Name = "Fwd";
-            this.Fwd.ToolTipText = "Translation to front (< 20cm)";
-            this.Fwd.Width = 50;
             // 
             // MainForm
             // 

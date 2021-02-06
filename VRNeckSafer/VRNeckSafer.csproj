@@ -140,6 +140,7 @@
     <None Include="README.md" />
     <None Include="Release\VRNeckSaferV16.zip" />
     <None Include="Release\VRNeckSaferV20.zip" />
+    <None Include="Release\VRNeckSaferV201.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -161,6 +162,7 @@
     <Content Include="Release\VRNSv15.JPG" />
     <Content Include="Release\VRNSv16.JPG" />
     <Content Include="Release\VRNSv20.JPG" />
+    <Content Include="Release\VRNSv201.JPG" />
     <Content Include="Release\VRNSv20_2.JPG" />
     <Content Include="VRNS.ico" />
   </ItemGroup>
