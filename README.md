@@ -68,4 +68,13 @@ new features/changes:
    position compensation
    app mode can be "Background" (requires SteamVR to already run) or "Overlay" (starts SteamVR on its own)
  
-   
+** Update v2.01: **
+
+minor change: typo fix in GUI and allowed Autorotation with Accumulative mode.
+ 
+
+** Update v2.02: **
+
+hotfix for DCS   
+
+Download link:
