@@ -321,7 +321,7 @@ namespace VRNeckSafer
             }
             arot = yawsign * autorot;
             if (transx > fabs(atrans.X)) atrans.X = (float)transx / 100.0F * -yawsign;
-            if (transz > fabs(atrans.Z)) atrans.Z = (float)transz / 100.0F * -yawsign;
+            if (transz > fabs(atrans.Z)) atrans.Z = (float)transz / 100.0F;
         }
         private void zeroBT_Click(object sender, EventArgs e)
         {

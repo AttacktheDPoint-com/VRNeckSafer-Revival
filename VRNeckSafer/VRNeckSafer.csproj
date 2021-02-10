@@ -141,6 +141,7 @@
     <None Include="Release\VRNeckSaferV20.zip" />
     <None Include="Release\VRNeckSaferV201.zip" />
     <None Include="Release\VRNeckSaferV202.zip" />
+    <None Include="Release\VRNeckSaferV203.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
