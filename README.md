@@ -77,4 +77,8 @@ minor change: typo fix in GUI and allowed Autorotation with Accumulative mode.
 
 hotfix for DCS   
 
-Download link: [VRNeckSaferV202.zip](https://gitlab.com/NobiWan/vrnecksafer/-/blob/master/VRNeckSafer/Release/VRNeckSaferV202.zip)
+**Update v2.03:**
+
+fix for fwd translation when autorotation to left 
+
+Download link: [VRNeckSaferV202.zip](https://gitlab.com/NobiWan/vrnecksafer/-/blob/master/VRNeckSafer/Release/VRNeckSaferV203.zip)
