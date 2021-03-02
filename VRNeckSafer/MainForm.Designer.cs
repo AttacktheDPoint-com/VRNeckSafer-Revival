@@ -100,6 +100,8 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
+            this.error_label = new System.Windows.Forms.Label();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutorotGridView)).BeginInit();
             this.HMDYawBox.SuspendLayout();
@@ -113,6 +115,8 @@
             // 
             // groupAuto
             // 
+            this.groupAuto.Controls.Add(this.error_label);
+            this.groupAuto.Controls.Add(this.button1);
             this.groupAuto.Controls.Add(this.label2);
             this.groupAuto.Controls.Add(this.SetHoldButton4);
             this.groupAuto.Controls.Add(this.SetHoldButton3);
@@ -264,7 +268,7 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(156, 18);
+            this.AddButton.Location = new System.Drawing.Point(135, 20);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(43, 23);
             this.AddButton.TabIndex = 40;
@@ -274,7 +278,7 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(207, 18);
+            this.DeleteButton.Location = new System.Drawing.Point(181, 20);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(43, 23);
             this.DeleteButton.TabIndex = 41;
@@ -806,6 +810,25 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(227, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 23);
+            this.button1.TabIndex = 55;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // error_label
+            // 
+            this.error_label.AutoSize = true;
+            this.error_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.error_label.ForeColor = System.Drawing.Color.Red;
+            this.error_label.Location = new System.Drawing.Point(90, 25);
+            this.error_label.Name = "error_label";
+            this.error_label.Size = new System.Drawing.Size(34, 13);
+            this.error_label.TabIndex = 56;
+            this.error_label.Text = "Error";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -916,6 +939,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rot;
         private System.Windows.Forms.DataGridViewTextBoxColumn LR;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fwd;
+        private System.Windows.Forms.Label error_label;
+        private System.Windows.Forms.Button button1;
     }
 }
 

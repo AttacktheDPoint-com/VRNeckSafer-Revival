@@ -114,10 +114,13 @@ namespace VRNeckSafer
             Vector3 oldHmdXyz = new Vector3(HmdPose.m3, HmdPose.m7, HmdPose.m11);
             Vector3 newHmdXyz = new Vector3(HmdPose.m3, HmdPose.m7, HmdPose.m11);
 
-            Vector3 rottrans = rotateCoord(trans, -(HMDYawOffset + Angle));
+            Vector3 rottrans = rotateCoord(trans, -HMDYawOffset);
+
+            oldHmdXyz = rotateCoord(oldHmdXyz, -deltaRot);
 
             newHmdXyz = Vector3.Subtract(newHmdXyz, rottrans);
             newHmdXyz = Vector3.Subtract(newHmdXyz, deltaPos);
+            newHmdXyz = rotateCoord(newHmdXyz, -Angle);
 
             Vector3 Xyz = Vector3.Subtract(oldHmdXyz, newHmdXyz);
 

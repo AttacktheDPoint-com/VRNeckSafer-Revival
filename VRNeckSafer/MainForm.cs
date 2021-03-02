@@ -25,12 +25,17 @@ namespace VRNeckSafer
 
         public bool lastpressed;
 
+        public bool autorot_config_error;
+
+        public int min_form_heigh;
+
         public MainForm()
         {
 
             conf = Config.ReadConfig();
 
             InitializeComponent();
+            min_form_heigh = Height;
             notifyIcon.ContextMenuStrip = contextMenuStrip;
             this.showToolStripMenuItem.Click += showToolStripMenuItem_Click;
             this.exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
@@ -84,6 +89,8 @@ namespace VRNeckSafer
 
             setLabelToolTip(LeftLabel, conf.LeftButton);
             setLabelToolTip(RightLabel, conf.RightButton);
+
+            error_label.Visible = check_autorot_config();
 
             loopTimer.Start();
         }
@@ -392,41 +399,66 @@ namespace VRNeckSafer
             }
         }
 
+        private bool check_autorot_config()
+        {
+            int val;
+
+            bool error = false;
+
+            for (int col = 0; col < AutorotGridView.ColumnCount; col++)
+            {
+                for (int row = 0; row < AutorotGridView.RowCount; row++)
+                {
+                    string s = AutorotGridView[col, row].Value.ToString();
+                    bool good = int.TryParse(s, out val);
+
+                    if (good)
+                    {
+                        if (val < 0) good = false;
+                        if (row > 0 && col == 1 && val <= conf.AutoSteps[row - 1][0]) good = false;
+                        if (col == 0 && val <= conf.AutoSteps[row][1]) good = false;
+                        if (col == 1 && val >= conf.AutoSteps[row][0]) good = false;
+                        if (col == 3 && val > 40) good = false;
+                        if (col == 4 && val > 20) good = false;
+                    }
+
+                    if (good)
+                    {
+                        AutorotGridView.Rows[row].Cells[col].Style.BackColor = SystemColors.Control;
+                    }
+                    else
+                    {
+                        AutorotGridView.Rows[row].Cells[col].Style.BackColor = System.Drawing.Color.Red;
+                        error = true;
+                    }
+                }
+            }
+            return error;
+        }
+
         private void AutorotGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int val;
 
             if (e.RowIndex == -1) return;
+
             string s = AutorotGridView[e.ColumnIndex, e.RowIndex].Value.ToString();
             bool good = int.TryParse(s, out val);
 
             if (good)
             {
-                if (val < 0) good = false; 
-                if (e.RowIndex > 0 && e.ColumnIndex == 1 && val <= conf.AutoSteps[e.RowIndex - 1][0]) good = false;
-                if (e.ColumnIndex == 0 && val <= conf.AutoSteps[e.RowIndex][1]) good = false;
-                if (e.ColumnIndex == 1 && val >= conf.AutoSteps[e.RowIndex][0]) good = false;
-                if (e.ColumnIndex == 3 && val > 40) good = false;
-                if (e.ColumnIndex == 4 && val > 20) good = false;
-            }
-
-            if (good) 
-            {
                 conf.AutoSteps[e.RowIndex][e.ColumnIndex] = val;
                 conf.WriteConfig();
-                AutorotGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = SystemColors.Control;
             }
-            else
-            {
-                AutorotGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = System.Drawing.Color.Red;
-            }
+
+            error_label.Visible = check_autorot_config();
         }
 
         private void AutorotGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             AutorotGridView.Height = AutorotGridView.RowCount * 22 + 23;
             AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 124);
-
+            MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 430));
             conf.WriteConfig();
         }
 
@@ -434,6 +466,7 @@ namespace VRNeckSafer
         {
             AutorotGridView.Height = AutorotGridView.RowCount * 22 + 23;
             AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 124);
+            MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 430));
             conf.WriteConfig();
         }
 
