@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupAuto = new System.Windows.Forms.GroupBox();
+            this.error_label2 = new System.Windows.Forms.Label();
+            this.error_label = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.SetHoldButton4 = new System.Windows.Forms.Button();
             this.SetHoldButton3 = new System.Windows.Forms.Button();
@@ -100,8 +103,6 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.error_label = new System.Windows.Forms.Label();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutorotGridView)).BeginInit();
             this.HMDYawBox.SuspendLayout();
@@ -115,6 +116,7 @@
             // 
             // groupAuto
             // 
+            this.groupAuto.Controls.Add(this.error_label2);
             this.groupAuto.Controls.Add(this.error_label);
             this.groupAuto.Controls.Add(this.button1);
             this.groupAuto.Controls.Add(this.label2);
@@ -132,6 +134,37 @@
             this.groupAuto.Size = new System.Drawing.Size(256, 181);
             this.groupAuto.TabIndex = 13;
             this.groupAuto.TabStop = false;
+            // 
+            // error_label2
+            // 
+            this.error_label2.AutoSize = true;
+            this.error_label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.error_label2.ForeColor = System.Drawing.Color.Red;
+            this.error_label2.Location = new System.Drawing.Point(87, 31);
+            this.error_label2.Name = "error_label2";
+            this.error_label2.Size = new System.Drawing.Size(38, 13);
+            this.error_label2.TabIndex = 57;
+            this.error_label2.Text = "value";
+            // 
+            // error_label
+            // 
+            this.error_label.AutoSize = true;
+            this.error_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.error_label.ForeColor = System.Drawing.Color.Red;
+            this.error_label.Location = new System.Drawing.Point(84, 20);
+            this.error_label.Name = "error_label";
+            this.error_label.Size = new System.Drawing.Size(45, 13);
+            this.error_label.TabIndex = 56;
+            this.error_label.Text = "Invalid";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(227, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 23);
+            this.button1.TabIndex = 55;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // label2
             // 
@@ -328,7 +361,7 @@
             this.HMDYawBox.Controls.Add(this.label11);
             this.HMDYawBox.Controls.Add(this.label12);
             this.HMDYawBox.Controls.Add(this.label10);
-            this.HMDYawBox.Location = new System.Drawing.Point(12, 19);
+            this.HMDYawBox.Location = new System.Drawing.Point(12, 22);
             this.HMDYawBox.Name = "HMDYawBox";
             this.HMDYawBox.Size = new System.Drawing.Size(256, 100);
             this.HMDYawBox.TabIndex = 31;
@@ -338,7 +371,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, -2);
+            this.label3.Location = new System.Drawing.Point(5, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 16);
             this.label3.TabIndex = 54;
@@ -408,7 +441,7 @@
             this.groupBox1.Controls.Add(this.SetRightButton);
             this.groupBox1.Controls.Add(this.RightLabel);
             this.groupBox1.Controls.Add(this.LeftLabel);
-            this.groupBox1.Location = new System.Drawing.Point(12, 128);
+            this.groupBox1.Location = new System.Drawing.Point(12, 129);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(256, 146);
             this.groupBox1.TabIndex = 38;
@@ -554,7 +587,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(5, -1);
+            this.label19.Location = new System.Drawing.Point(5, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(114, 16);
             this.label19.TabIndex = 48;
@@ -810,25 +843,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(227, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 23);
-            this.button1.TabIndex = 55;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // error_label
-            // 
-            this.error_label.AutoSize = true;
-            this.error_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.error_label.ForeColor = System.Drawing.Color.Red;
-            this.error_label.Location = new System.Drawing.Point(90, 25);
-            this.error_label.Name = "error_label";
-            this.error_label.Size = new System.Drawing.Size(34, 13);
-            this.error_label.TabIndex = 56;
-            this.error_label.Text = "Error";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -941,6 +955,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fwd;
         private System.Windows.Forms.Label error_label;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label error_label2;
     }
 }
 

@@ -91,7 +91,7 @@ namespace VRNeckSafer
             setLabelToolTip(RightLabel, conf.RightButton);
 
             error_label.Visible = check_autorot_config();
-
+            error_label2.Visible = error_label.Visible;
             loopTimer.Start();
         }
 
@@ -415,6 +415,12 @@ namespace VRNeckSafer
                     if (good)
                     {
                         if (val < 0) good = false;
+                        if (row < AutorotGridView.RowCount - 1 && col==0) {
+                            if (val >= conf.AutoSteps[row + 1][1]) good = false;
+                            if (val >= conf.AutoSteps[row + 1][0]) good = false;
+                        }
+
+                        if (row > 0 && col == 0 && val <= conf.AutoSteps[row - 1][0]) good = false;
                         if (row > 0 && col == 1 && val <= conf.AutoSteps[row - 1][0]) good = false;
                         if (col == 0 && val <= conf.AutoSteps[row][1]) good = false;
                         if (col == 1 && val >= conf.AutoSteps[row][0]) good = false;
@@ -452,6 +458,7 @@ namespace VRNeckSafer
             }
 
             error_label.Visible = check_autorot_config();
+            error_label2.Visible = error_label.Visible;
         }
 
         private void AutorotGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

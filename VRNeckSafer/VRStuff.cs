@@ -1,5 +1,6 @@
 ﻿using SharpDX;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Valve.VR;
 
@@ -33,12 +34,25 @@ namespace VRNeckSafer
                     break;
             }
 
-            system = OpenVR.Init(ref initError, ea);
+            var task = Task.Run(() => OpenVR.Init(ref initError, ea));//you can pass parameters to the method as well
+            if (task.Wait(TimeSpan.FromSeconds(5)))
+                system = task.Result; //the method returns elegantly
+            else
+                initError = EVRInitError.Unknown;
+
+//            system = OpenVR.Init(ref initError, ea);
 
 
             if (initError != EVRInitError.None)
             {
-                MessageBox.Show("Unable to connect to SteamVR/OpenVR", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (initError == EVRInitError.Unknown)
+                {
+                    MessageBox.Show("SteamVR timed out!\r\n try to restart SteamVR/Oculus/WMR", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Unable to connect to SteamVR/OpenVR", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 System.Environment.Exit(0);
             }
         }
