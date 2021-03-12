@@ -103,6 +103,7 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutorotGridView)).BeginInit();
             this.HMDYawBox.SuspendLayout();
@@ -117,6 +118,7 @@
             // groupAuto
             // 
             this.groupAuto.Controls.Add(this.error_label2);
+            this.groupAuto.Controls.Add(this.label26);
             this.groupAuto.Controls.Add(this.error_label);
             this.groupAuto.Controls.Add(this.graphButton);
             this.groupAuto.Controls.Add(this.label2);
@@ -128,7 +130,7 @@
             this.groupAuto.Controls.Add(this.AutorotGridView);
             this.groupAuto.Controls.Add(this.AddButton);
             this.groupAuto.Controls.Add(this.DeleteButton);
-            this.groupAuto.Location = new System.Drawing.Point(12, 283);
+            this.groupAuto.Location = new System.Drawing.Point(12, 298);
             this.groupAuto.Name = "groupAuto";
             this.groupAuto.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupAuto.Size = new System.Drawing.Size(256, 181);
@@ -325,7 +327,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(8, 42);
+            this.label12.Location = new System.Drawing.Point(8, 39);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(236, 13);
             this.label12.TabIndex = 26;
@@ -335,7 +337,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 61);
+            this.label11.Location = new System.Drawing.Point(6, 58);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(137, 13);
             this.label11.TabIndex = 25;
@@ -344,7 +346,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 79);
+            this.label10.Location = new System.Drawing.Point(6, 76);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(154, 13);
             this.label10.TabIndex = 24;
@@ -357,6 +359,7 @@
             // 
             // HMDYawBox
             // 
+            this.HMDYawBox.Controls.Add(this.label1);
             this.HMDYawBox.Controls.Add(this.label3);
             this.HMDYawBox.Controls.Add(this.SetResetButton);
             this.HMDYawBox.Controls.Add(this.HMDYawLabel);
@@ -365,7 +368,7 @@
             this.HMDYawBox.Controls.Add(this.label10);
             this.HMDYawBox.Location = new System.Drawing.Point(12, 22);
             this.HMDYawBox.Name = "HMDYawBox";
-            this.HMDYawBox.Size = new System.Drawing.Size(256, 100);
+            this.HMDYawBox.Size = new System.Drawing.Size(256, 118);
             this.HMDYawBox.TabIndex = 31;
             this.HMDYawBox.TabStop = false;
             // 
@@ -373,7 +376,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 1);
+            this.label3.Location = new System.Drawing.Point(5, -2);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 16);
             this.label3.TabIndex = 54;
@@ -381,7 +384,7 @@
             // 
             // SetResetButton
             // 
-            this.SetResetButton.Location = new System.Drawing.Point(165, 59);
+            this.SetResetButton.Location = new System.Drawing.Point(165, 56);
             this.SetResetButton.Name = "SetResetButton";
             this.SetResetButton.Size = new System.Drawing.Size(71, 35);
             this.SetResetButton.TabIndex = 28;
@@ -393,7 +396,7 @@
             // 
             this.HMDYawLabel.AutoSize = true;
             this.HMDYawLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HMDYawLabel.Location = new System.Drawing.Point(67, 21);
+            this.HMDYawLabel.Location = new System.Drawing.Point(67, 20);
             this.HMDYawLabel.Name = "HMDYawLabel";
             this.HMDYawLabel.Size = new System.Drawing.Size(101, 13);
             this.HMDYawLabel.TabIndex = 27;
@@ -404,7 +407,7 @@
             // 
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLabel.Location = new System.Drawing.Point(237, 470);
+            this.VersionLabel.Location = new System.Drawing.Point(237, 482);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.VersionLabel.Size = new System.Drawing.Size(34, 13);
@@ -415,7 +418,7 @@
             // modeLB
             // 
             this.modeLB.AutoSize = true;
-            this.modeLB.Location = new System.Drawing.Point(6, 470);
+            this.modeLB.Location = new System.Drawing.Point(6, 482);
             this.modeLB.Name = "modeLB";
             this.modeLB.Size = new System.Drawing.Size(86, 13);
             this.modeLB.TabIndex = 35;
@@ -443,7 +446,7 @@
             this.groupBox1.Controls.Add(this.SetRightButton);
             this.groupBox1.Controls.Add(this.RightLabel);
             this.groupBox1.Controls.Add(this.LeftLabel);
-            this.groupBox1.Location = new System.Drawing.Point(12, 129);
+            this.groupBox1.Location = new System.Drawing.Point(12, 146);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(256, 146);
             this.groupBox1.TabIndex = 38;
@@ -589,7 +592,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(5, 0);
+            this.label19.Location = new System.Drawing.Point(5, -2);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(114, 16);
             this.label19.TabIndex = 48;
@@ -659,7 +662,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(16, 280);
+            this.label26.Location = new System.Drawing.Point(5, -2);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(91, 16);
             this.label26.TabIndex = 54;
@@ -845,12 +848,21 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(233, 13);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "When in cockpit press Reset Button to calibrate";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 491);
-            this.Controls.Add(this.label26);
+            this.ClientSize = new System.Drawing.Size(276, 500);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.modeLB);
             this.Controls.Add(this.HMDYawBox);
@@ -860,7 +872,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MaximumSize = new System.Drawing.Size(292, 3070);
-            this.MinimumSize = new System.Drawing.Size(292, 530);
+            this.MinimumSize = new System.Drawing.Size(292, 539);
             this.Name = "MainForm";
             this.Text = "VRNeckSafer";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
@@ -958,6 +970,7 @@
         private System.Windows.Forms.Label error_label;
         private System.Windows.Forms.Button graphButton;
         private System.Windows.Forms.Label error_label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -40,9 +40,6 @@ namespace VRNeckSafer
             else
                 initError = EVRInitError.Unknown;
 
-//            system = OpenVR.Init(ref initError, ea);
-
-
             if (initError != EVRInitError.None)
             {
                 if (initError == EVRInitError.Unknown)
@@ -115,37 +112,31 @@ namespace VRNeckSafer
 
         public void setOffset(int a, Vector3 trans)
         {
-
-            double Angle = a * Math.PI / 180.0 + deltaRot;
-
+            double Angle = a * Math.PI / 180.0;
+ 
             HmdMatrix34_t resetCenter = new HmdMatrix34_t()
-            { m0 = 1, m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 1, m6 = 0, m7 = 0, m8 = 0, m9 = 0, m10 = 1, m11 = 0 };
-
+            { m0 = 1, m1 = 0, m2 = 0, m3 = deltaPos.X, m4 = 0, m5 = 1, m6 = 0, m7 = deltaPos.Y, m8 = 0, m9 = 0, m10 = 1, m11 = deltaPos.Z };
             setChaperone(resetCenter);
 
             getHMDPose();
 
             Vector3 oldHmdXyz = new Vector3(HmdPose.m3, HmdPose.m7, HmdPose.m11);
-            Vector3 newHmdXyz = new Vector3(HmdPose.m3, HmdPose.m7, HmdPose.m11);
-
-            Vector3 rottrans = rotateCoord(trans, -HMDYawOffset);
-
             oldHmdXyz = rotateCoord(oldHmdXyz, -deltaRot);
+            oldHmdXyz = Vector3.Add(oldHmdXyz, deltaPos);
 
-            newHmdXyz = Vector3.Subtract(newHmdXyz, rottrans);
-            newHmdXyz = Vector3.Subtract(newHmdXyz, deltaPos);
-            newHmdXyz = rotateCoord(newHmdXyz, -Angle);
+            Vector3 newHmdXyz = new Vector3(HmdPose.m3, HmdPose.m7, HmdPose.m11);
+            newHmdXyz = Vector3.Subtract(newHmdXyz, trans);
+            newHmdXyz = rotateCoord(newHmdXyz, -Angle -deltaRot);
 
             Vector3 Xyz = Vector3.Subtract(oldHmdXyz, newHmdXyz);
 
-            float c = (float)Math.Cos(Angle);
-            float s = (float)Math.Sin(Angle);
+            float c = (float)Math.Cos(Angle + deltaRot);
+            float s = (float)Math.Sin(Angle + deltaRot);
 
             HmdMatrix34_t rotatedCenter = new HmdMatrix34_t()
             { m0 = c, m1 = 0, m2 = s, m3 = Xyz.X, m4 = 0, m5 = 1, m6 = 0, m7 = Xyz.Y, m8 = -s, m9 = 0, m10 = c, m11 = Xyz.Z };
 
             setChaperone(rotatedCenter);
-
         }
 
         void setChaperone(HmdMatrix34_t newSetup)
@@ -169,6 +160,5 @@ namespace VRNeckSafer
             v.Z = (float)Z;
             return v;
         }
-
     }
 }

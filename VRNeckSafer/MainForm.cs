@@ -17,10 +17,13 @@ namespace VRNeckSafer
         public int auto_offset_angle;
         public int sum_offset_angle;
         public int last_offset_angle;
+        public float last_offset_x;
+        public float last_offset_z;
 
         public float trans_offset_LR;
         public float trans_offset_F;
         public Vector3 trans_offset;
+        public Vector3 auto_trans_offset;
 
         public int hmdYaw;
 
@@ -278,14 +281,18 @@ namespace VRNeckSafer
 
             if (autoCB.Checked && !autofrozen)
             {
-                calcAutoRotAndTrans(hmdYaw, ref auto_offset_angle, ref trans_offset);
+                calcAutoRotAndTrans(hmdYaw, ref auto_offset_angle, ref auto_trans_offset);
             }
 
 
             sum_offset_angle = joy_offset_angle + auto_offset_angle;
+            if (Math.Abs(auto_trans_offset.X) > Math.Abs(trans_offset.X)) trans_offset.X = auto_trans_offset.X;
+            if (Math.Abs(auto_trans_offset.Z) > Math.Abs(trans_offset.Z)) trans_offset.Z = auto_trans_offset.Z;
 
 
-            if (last_offset_angle != sum_offset_angle)
+            if (last_offset_angle != sum_offset_angle 
+                || last_offset_x != trans_offset.X
+                || last_offset_z != trans_offset.Z)
             {
                 vr.setOffset(sum_offset_angle, trans_offset);
             }
@@ -293,6 +300,8 @@ namespace VRNeckSafer
             lastpressed = l_pressed || r_pressed;
 
             last_offset_angle = sum_offset_angle;
+            last_offset_x = trans_offset.X;
+            last_offset_z = trans_offset.Z;
 
             Text = "VRNeckSafer (" + sum_offset_angle + " deg)";
 
@@ -345,13 +354,13 @@ namespace VRNeckSafer
                 }
             }
 
-            if ((autorot < absarot) && (absyaw >= deact))
+            if ((absarot > autorot) && (absyaw >= deact))
             {
                 return;
             }
             arot = yawsign * autorot;
-            if (transx > fabs(atrans.X)) atrans.X = (float)transx / 100.0F * -yawsign;
-            if (transz > fabs(atrans.Z)) atrans.Z = (float)transz / 100.0F;
+            atrans.X = (float)transx / 100.0F * -yawsign;
+            atrans.Z = (float)transz / 100.0F;
         }
         private void zeroBT_Click(object sender, EventArgs e)
         {
@@ -489,7 +498,7 @@ namespace VRNeckSafer
         private void AutorotGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             AutorotGridView.Height = AutorotGridView.RowCount * 22 + 20;
-            AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 124);
+            AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 111);
             MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 430));
             conf.WriteConfig();
             if (gr != null)
@@ -499,7 +508,7 @@ namespace VRNeckSafer
         private void AutorotGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             AutorotGridView.Height = AutorotGridView.RowCount * 22 + 20;
-            AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 124);
+            AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 111);
             MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 430));
             conf.WriteConfig();
             if (gr != null)
@@ -571,12 +580,12 @@ namespace VRNeckSafer
 
         void sizeChanged()
         {
-            modeLB.Location = new System.Drawing.Point(modeLB.Location.X, Size.Height - 60);
-            VersionLabel.Location = new System.Drawing.Point(VersionLabel.Location.X, Size.Height - 60);
-            groupAuto.Height = Size.Height - groupAuto.Location.Y - 67;
+            modeLB.Location = new System.Drawing.Point(modeLB.Location.X, Size.Height - 56);
+            VersionLabel.Location = new System.Drawing.Point(VersionLabel.Location.X, Size.Height - 56);
+            groupAuto.Height = Size.Height - groupAuto.Location.Y - 59;
 
             AutorotGridView.Height = AutorotGridView.RowCount * 22 + 20;
-            AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 124);
+            AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 111);
         }
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {

@@ -1,7 +1,8 @@
 VRNeckSafer tries to help virtual pilots flying in VR to not break their neck while trying to check their six.
 It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2 and DCS **with SteamVR**.
 
-<img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv202.JPG"> 
+<img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv205.JPG"><img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv205b.JPG"> 
+ 
 
 **How to use it:**
 
@@ -72,7 +73,6 @@ new features/changes:
 
 minor change: typo fix in GUI and allowed Autorotation with Accumulative mode.
  
-
 **Update v2.02:**
 
 hotfix for DCS   
@@ -83,5 +83,11 @@ fix for fwd translation when autorotation to left
 
 **Update v2.04:**
 
+**Update v2.05:**
+added fancy diagram to help understand the autorot values
+fixed offset bug reintroduced in v2.04
 
-Download link: [VRNeckSaferV20VRNeckSaferV204VRNeckSaferV204.zip](https://gitlab.com/NobiWan/vrnecksafer/-/blob/master/VRNeckSafer/Release/VRNeckSaferV20VRNeckSaferV204VRNeckSaferV204.zip)
+known issues:
+still problems with Valve Index and DCS
+
+Download link: [VRNeckSaferV20VRNeckSaferV204VRNeckSaferV205.zip](https://gitlab.com/NobiWan/vrnecksafer/-/blob/master/VRNeckSafer/Release/VRNeckSaferV205.zip)
