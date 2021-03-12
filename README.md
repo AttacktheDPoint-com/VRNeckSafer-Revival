@@ -84,8 +84,9 @@ fix for fwd translation when autorotation to left
 **Update v2.04:**
 
 **Update v2.05:**
-added fancy diagram to help understand the autorot values
-fixed offset bug reintroduced in v2.04
+- added fancy diagram to help understand the autorot values
+- fixed offset bug reintroduced in v2.04
+
 
 known issues:
 still problems with Valve Index and DCS
