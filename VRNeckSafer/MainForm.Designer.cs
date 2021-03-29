@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupAuto = new System.Windows.Forms.GroupBox();
             this.error_label2 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.error_label = new System.Windows.Forms.Label();
             this.graphButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.loopTimer = new System.Windows.Forms.Timer(this.components);
             this.HMDYawBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SetResetButton = new System.Windows.Forms.Button();
             this.HMDYawLabel = new System.Windows.Forms.Label();
@@ -78,7 +80,6 @@
             this.SetRightButton = new System.Windows.Forms.Button();
             this.RightLabel = new System.Windows.Forms.Label();
             this.LeftLabel = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.advancedConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +104,6 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutorotGridView)).BeginInit();
             this.HMDYawBox.SuspendLayout();
@@ -147,6 +147,16 @@
             this.error_label2.Size = new System.Drawing.Size(38, 13);
             this.error_label2.TabIndex = 57;
             this.error_label2.Text = "value";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(5, -2);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(91, 16);
+            this.label26.TabIndex = 54;
+            this.label26.Text = "Autorotation";
             // 
             // error_label
             // 
@@ -372,6 +382,16 @@
             this.HMDYawBox.TabIndex = 31;
             this.HMDYawBox.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(233, 13);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "When in cockpit press Reset Button to calibrate";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -412,7 +432,7 @@
             this.VersionLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.VersionLabel.Size = new System.Drawing.Size(34, 13);
             this.VersionLabel.TabIndex = 34;
-            this.VersionLabel.Text = "v2.05";
+            this.VersionLabel.Text = "v2.06";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // modeLB
@@ -658,16 +678,6 @@
             this.LeftLabel.TabIndex = 38;
             this.LeftLabel.Text = "L :";
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(5, -2);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(91, 16);
-            this.label26.TabIndex = 54;
-            this.label26.Text = "Autorotation";
-            // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -847,16 +857,6 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 13);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "When in cockpit press Reset Button to calibrate";
             // 
             // MainForm
             // 
