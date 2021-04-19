@@ -29,7 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupAuto = new System.Windows.Forms.GroupBox();
             this.error_label2 = new System.Windows.Forms.Label();
             this.AutorotLabel = new System.Windows.Forms.Label();
@@ -42,11 +49,6 @@
             this.SetHoldButton1 = new System.Windows.Forms.Button();
             this.autoCB = new System.Windows.Forms.CheckBox();
             this.AutorotGridView = new System.Windows.Forms.DataGridView();
-            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -109,12 +111,18 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MultipleLRButtonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.resetOptionsToDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutorotGridView)).BeginInit();
             this.HMDYawBox.SuspendLayout();
@@ -186,7 +194,7 @@
             this.graphButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.graphButton.Location = new System.Drawing.Point(226, 18);
             this.graphButton.Name = "graphButton";
-            this.graphButton.Size = new System.Drawing.Size(24, 21);
+            this.graphButton.Size = new System.Drawing.Size(24, 22);
             this.graphButton.TabIndex = 55;
             this.graphButton.UseVisualStyleBackColor = true;
             this.graphButton.Click += new System.EventHandler(this.graphButton_Click);
@@ -203,9 +211,10 @@
             // 
             // SetHoldButton4
             // 
+            this.SetHoldButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetHoldButton4.Location = new System.Drawing.Point(8, 137);
             this.SetHoldButton4.Name = "SetHoldButton4";
-            this.SetHoldButton4.Size = new System.Drawing.Size(66, 21);
+            this.SetHoldButton4.Size = new System.Drawing.Size(66, 22);
             this.SetHoldButton4.TabIndex = 45;
             this.SetHoldButton4.Text = "Hold 4";
             this.SetHoldButton4.UseVisualStyleBackColor = true;
@@ -213,9 +222,10 @@
             // 
             // SetHoldButton3
             // 
+            this.SetHoldButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetHoldButton3.Location = new System.Drawing.Point(8, 110);
             this.SetHoldButton3.Name = "SetHoldButton3";
-            this.SetHoldButton3.Size = new System.Drawing.Size(66, 21);
+            this.SetHoldButton3.Size = new System.Drawing.Size(66, 22);
             this.SetHoldButton3.TabIndex = 44;
             this.SetHoldButton3.Text = "Hold 3";
             this.SetHoldButton3.UseVisualStyleBackColor = true;
@@ -223,9 +233,10 @@
             // 
             // SetHoldButton2
             // 
+            this.SetHoldButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetHoldButton2.Location = new System.Drawing.Point(8, 83);
             this.SetHoldButton2.Name = "SetHoldButton2";
-            this.SetHoldButton2.Size = new System.Drawing.Size(66, 21);
+            this.SetHoldButton2.Size = new System.Drawing.Size(66, 22);
             this.SetHoldButton2.TabIndex = 43;
             this.SetHoldButton2.Text = "Hold 2";
             this.SetHoldButton2.UseVisualStyleBackColor = true;
@@ -233,9 +244,10 @@
             // 
             // SetHoldButton1
             // 
+            this.SetHoldButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetHoldButton1.Location = new System.Drawing.Point(9, 56);
             this.SetHoldButton1.Name = "SetHoldButton1";
-            this.SetHoldButton1.Size = new System.Drawing.Size(66, 21);
+            this.SetHoldButton1.Size = new System.Drawing.Size(66, 22);
             this.SetHoldButton1.TabIndex = 42;
             this.SetHoldButton1.Text = "Hold 1";
             this.SetHoldButton1.UseVisualStyleBackColor = true;
@@ -245,9 +257,10 @@
             // 
             this.autoCB.AutoSize = true;
             this.autoCB.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoCB.Location = new System.Drawing.Point(13, 18);
+            this.autoCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoCB.Location = new System.Drawing.Point(13, 20);
             this.autoCB.Name = "autoCB";
-            this.autoCB.Size = new System.Drawing.Size(52, 16);
+            this.autoCB.Size = new System.Drawing.Size(59, 17);
             this.autoCB.TabIndex = 15;
             this.autoCB.Text = "Enable";
             this.autoCB.UseVisualStyleBackColor = true;
@@ -259,6 +272,14 @@
             this.AutorotGridView.AllowUserToDeleteRows = false;
             this.AutorotGridView.AllowUserToResizeColumns = false;
             this.AutorotGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AutorotGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.AutorotGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AutorotGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.act,
@@ -266,6 +287,14 @@
             this.rot,
             this.LR,
             this.Fwd});
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AutorotGridView.DefaultCellStyle = dataGridViewCellStyle21;
             this.AutorotGridView.Location = new System.Drawing.Point(81, 43);
             this.AutorotGridView.Name = "AutorotGridView";
             this.AutorotGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -275,60 +304,12 @@
             this.AutorotGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.AutorotGridView_RowsAdded);
             this.AutorotGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.AutorotGridView_RowsRemoved);
             // 
-            // act
-            // 
-            this.act.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.act.Frozen = true;
-            this.act.HeaderText = "act";
-            this.act.Name = "act";
-            this.act.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.act.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.act.ToolTipText = "Activation angle";
-            this.act.Width = 30;
-            // 
-            // deact
-            // 
-            this.deact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.deact.Frozen = true;
-            this.deact.HeaderText = "deact";
-            this.deact.Name = "deact";
-            this.deact.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.deact.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.deact.ToolTipText = "Deactivation angle (< act and > previous act)";
-            this.deact.Width = 30;
-            // 
-            // rot
-            // 
-            this.rot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.rot.Frozen = true;
-            this.rot.HeaderText = "rot";
-            this.rot.Name = "rot";
-            this.rot.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.rot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.rot.ToolTipText = "Rotation angle";
-            this.rot.Width = 30;
-            // 
-            // LR
-            // 
-            this.LR.Frozen = true;
-            this.LR.HeaderText = "L/R";
-            this.LR.Name = "LR";
-            this.LR.ToolTipText = "Translation Left/Right (<40cm)";
-            this.LR.Width = 30;
-            // 
-            // Fwd
-            // 
-            this.Fwd.Frozen = true;
-            this.Fwd.HeaderText = "Fwd";
-            this.Fwd.Name = "Fwd";
-            this.Fwd.ToolTipText = "Translation to front (< 20cm)";
-            this.Fwd.Width = 50;
-            // 
             // AddButton
             // 
+            this.AddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddButton.Location = new System.Drawing.Point(81, 18);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(43, 21);
+            this.AddButton.Size = new System.Drawing.Size(43, 22);
             this.AddButton.TabIndex = 40;
             this.AddButton.Text = "add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -336,9 +317,10 @@
             // 
             // DeleteButton
             // 
+            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.Location = new System.Drawing.Point(128, 18);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(43, 21);
+            this.DeleteButton.Size = new System.Drawing.Size(43, 22);
             this.DeleteButton.TabIndex = 41;
             this.DeleteButton.Text = "del";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -367,9 +349,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(6, 70);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(130, 12);
+            this.label10.Size = new System.Drawing.Size(154, 13);
             this.label10.TabIndex = 24;
             this.label10.Text = "-  DCS: \"recenter VR Headset\"";
             // 
@@ -415,9 +398,10 @@
             // 
             // SetResetButton
             // 
-            this.SetResetButton.Location = new System.Drawing.Point(165, 52);
+            this.SetResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetResetButton.Location = new System.Drawing.Point(165, 51);
             this.SetResetButton.Name = "SetResetButton";
-            this.SetResetButton.Size = new System.Drawing.Size(71, 32);
+            this.SetResetButton.Size = new System.Drawing.Size(71, 35);
             this.SetResetButton.TabIndex = 28;
             this.SetResetButton.Text = "Set Reset Button";
             this.SetResetButton.UseVisualStyleBackColor = true;
@@ -437,21 +421,22 @@
             // VersionLabel
             // 
             this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VersionLabel.Location = new System.Drawing.Point(237, 445);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.VersionLabel.Size = new System.Drawing.Size(34, 13);
             this.VersionLabel.TabIndex = 34;
-            this.VersionLabel.Text = "v2.06";
+            this.VersionLabel.Text = "v2.07";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // modeLB
             // 
             this.modeLB.AutoSize = true;
+            this.modeLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modeLB.Location = new System.Drawing.Point(6, 445);
             this.modeLB.Name = "modeLB";
-            this.modeLB.Size = new System.Drawing.Size(75, 12);
+            this.modeLB.Size = new System.Drawing.Size(86, 13);
             this.modeLB.TabIndex = 35;
             this.modeLB.Text = "(Mode: standing)";
             this.toolTip1.SetToolTip(this.modeLB, "current VR gaming mode ");
@@ -495,6 +480,7 @@
             // 
             // transFNUP
             // 
+            this.transFNUP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transFNUP.Location = new System.Drawing.Point(168, 90);
             this.transFNUP.Maximum = new decimal(new int[] {
             20,
@@ -502,7 +488,7 @@
             0,
             0});
             this.transFNUP.Name = "transFNUP";
-            this.transFNUP.Size = new System.Drawing.Size(44, 18);
+            this.transFNUP.Size = new System.Drawing.Size(44, 20);
             this.transFNUP.TabIndex = 26;
             this.transFNUP.ValueChanged += new System.EventHandler(this.transFNUP_ValueChanged);
             this.transFNUP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.transFNUP_KeyUp);
@@ -519,6 +505,7 @@
             // 
             // angleNUD
             // 
+            this.angleNUD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.angleNUD.Location = new System.Drawing.Point(34, 66);
             this.angleNUD.Maximum = new decimal(new int[] {
             360,
@@ -526,7 +513,7 @@
             0,
             0});
             this.angleNUD.Name = "angleNUD";
-            this.angleNUD.Size = new System.Drawing.Size(38, 18);
+            this.angleNUD.Size = new System.Drawing.Size(38, 20);
             this.angleNUD.TabIndex = 9;
             this.angleNUD.Value = new decimal(new int[] {
             30,
@@ -538,6 +525,7 @@
             // 
             // transLRNUP
             // 
+            this.transLRNUP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transLRNUP.Location = new System.Drawing.Point(168, 66);
             this.transLRNUP.Maximum = new decimal(new int[] {
             40,
@@ -545,7 +533,7 @@
             0,
             0});
             this.transLRNUP.Name = "transLRNUP";
-            this.transLRNUP.Size = new System.Drawing.Size(44, 18);
+            this.transLRNUP.Size = new System.Drawing.Size(44, 20);
             this.transLRNUP.TabIndex = 25;
             this.transLRNUP.ValueChanged += new System.EventHandler(this.transLRNUP_ValueChanged);
             this.transLRNUP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.transLRNUP_KeyUp);
@@ -553,27 +541,30 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(72, 69);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(20, 12);
+            this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 20;
             this.label8.Text = "deg";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(215, 91);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(18, 12);
+            this.label17.Size = new System.Drawing.Size(21, 13);
             this.label17.TabIndex = 30;
             this.label17.Text = "cm";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(135, 69);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(20, 12);
+            this.label14.Size = new System.Drawing.Size(26, 13);
             this.label14.TabIndex = 27;
             this.label14.Text = "L/R";
             // 
@@ -591,9 +582,10 @@
             // 
             this.snapRB.AutoSize = true;
             this.snapRB.Checked = true;
+            this.snapRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snapRB.Location = new System.Drawing.Point(12, 111);
             this.snapRB.Name = "snapRB";
-            this.snapRB.Size = new System.Drawing.Size(44, 16);
+            this.snapRB.Size = new System.Drawing.Size(50, 17);
             this.snapRB.TabIndex = 1;
             this.snapRB.TabStop = true;
             this.snapRB.Text = "Snap";
@@ -602,9 +594,10 @@
             // additivRB
             // 
             this.additivRB.AutoSize = true;
+            this.additivRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.additivRB.Location = new System.Drawing.Point(68, 111);
             this.additivRB.Name = "additivRB";
-            this.additivRB.Size = new System.Drawing.Size(81, 16);
+            this.additivRB.Size = new System.Drawing.Size(89, 17);
             this.additivRB.TabIndex = 12;
             this.additivRB.Text = "Accumulative";
             this.additivRB.UseVisualStyleBackColor = true;
@@ -613,9 +606,10 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(135, 91);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(27, 12);
+            this.label16.Size = new System.Drawing.Size(30, 13);
             this.label16.TabIndex = 29;
             this.label16.Text = "Fwd.";
             // 
@@ -632,26 +626,29 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(10, 70);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 12);
+            this.label9.Size = new System.Drawing.Size(21, 13);
             this.label9.TabIndex = 21;
             this.label9.Text = "+/-";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(215, 69);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(18, 12);
+            this.label15.Size = new System.Drawing.Size(21, 13);
             this.label15.TabIndex = 28;
             this.label15.Text = "cm";
             // 
             // SetLeftButton
             // 
-            this.SetLeftButton.Location = new System.Drawing.Point(39, 21);
+            this.SetLeftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetLeftButton.Location = new System.Drawing.Point(39, 20);
             this.SetLeftButton.Name = "SetLeftButton";
-            this.SetLeftButton.Size = new System.Drawing.Size(72, 21);
+            this.SetLeftButton.Size = new System.Drawing.Size(72, 27);
             this.SetLeftButton.TabIndex = 36;
             this.SetLeftButton.Text = "Set Button";
             this.SetLeftButton.UseVisualStyleBackColor = true;
@@ -659,9 +656,10 @@
             // 
             // SetRightButton
             // 
-            this.SetRightButton.Location = new System.Drawing.Point(166, 21);
+            this.SetRightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetRightButton.Location = new System.Drawing.Point(166, 20);
             this.SetRightButton.Name = "SetRightButton";
-            this.SetRightButton.Size = new System.Drawing.Size(72, 21);
+            this.SetRightButton.Size = new System.Drawing.Size(72, 27);
             this.SetRightButton.TabIndex = 37;
             this.SetRightButton.Text = "Set Button";
             this.SetRightButton.UseVisualStyleBackColor = false;
@@ -711,6 +709,7 @@
             this.PosCompensationToolStripMenuItem,
             this.toolStripSeparator2,
             this.PitchLimToolStripMenuItem,
+            this.MultipleLRButtonsToolStripMenuItem,
             this.toolStripSeparator3,
             this.resetOptionsToDefaultToolStripMenuItem});
             this.advancedConfigToolStripMenuItem.Name = "advancedConfigToolStripMenuItem";
@@ -909,6 +908,13 @@
             this.toolStripMenuItem11.Size = new System.Drawing.Size(109, 22);
             this.toolStripMenuItem11.Text = "90 deg";
             // 
+            // MultipleLRButtonsToolStripMenuItem
+            // 
+            this.MultipleLRButtonsToolStripMenuItem.Name = "MultipleLRButtonsToolStripMenuItem";
+            this.MultipleLRButtonsToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.MultipleLRButtonsToolStripMenuItem.Text = "Multiple L/R buttons";
+            this.MultipleLRButtonsToolStripMenuItem.Click += new System.EventHandler(this.moreLRButtonsToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -947,6 +953,65 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // act
+            // 
+            this.act.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.act.DefaultCellStyle = dataGridViewCellStyle16;
+            this.act.Frozen = true;
+            this.act.HeaderText = "act";
+            this.act.Name = "act";
+            this.act.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.act.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.act.ToolTipText = "Activation angle";
+            this.act.Width = 30;
+            // 
+            // deact
+            // 
+            this.deact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deact.DefaultCellStyle = dataGridViewCellStyle17;
+            this.deact.Frozen = true;
+            this.deact.HeaderText = "deact";
+            this.deact.Name = "deact";
+            this.deact.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.deact.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.deact.ToolTipText = "Deactivation angle (< act and > previous act)";
+            this.deact.Width = 30;
+            // 
+            // rot
+            // 
+            this.rot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rot.DefaultCellStyle = dataGridViewCellStyle18;
+            this.rot.Frozen = true;
+            this.rot.HeaderText = "rot";
+            this.rot.Name = "rot";
+            this.rot.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.rot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.rot.ToolTipText = "Rotation angle";
+            this.rot.Width = 30;
+            // 
+            // LR
+            // 
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LR.DefaultCellStyle = dataGridViewCellStyle19;
+            this.LR.Frozen = true;
+            this.LR.HeaderText = "L/R";
+            this.LR.Name = "LR";
+            this.LR.ToolTipText = "Translation Left/Right (<40cm)";
+            this.LR.Width = 30;
+            // 
+            // Fwd
+            // 
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fwd.DefaultCellStyle = dataGridViewCellStyle20;
+            this.Fwd.Frozen = true;
+            this.Fwd.HeaderText = "Fwd";
+            this.Fwd.Name = "Fwd";
+            this.Fwd.ToolTipText = "Translation to front (< 20cm)";
+            this.Fwd.Width = 50;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -965,6 +1030,7 @@
             this.MinimumSize = new System.Drawing.Size(292, 501);
             this.Name = "MainForm";
             this.Text = "VRNS";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
@@ -1052,11 +1118,6 @@
         private System.Windows.Forms.ToolStripMenuItem inStandingModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alwaysToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem neverToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn act;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fwd;
         private System.Windows.Forms.Label error_label;
         private System.Windows.Forms.Button graphButton;
         private System.Windows.Forms.Label error_label2;
@@ -1072,6 +1133,12 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripMenuItem MultipleLRButtonsToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn act;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fwd;
     }
 }
 

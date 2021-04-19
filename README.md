@@ -92,7 +92,11 @@ fix for fwd translation when autorotation to left
 - reset button resets accumulative offset
 - added pitch limit (options menu). when HMD pitch (looking up) is bigger than limit autorot goes on hold. default is 90 deg = not effective 
 
+ **Update v2.07:**
+ - fixed GUI font
+ - Added option to select more than one button for manual rotation
+
 known issues:
 still problems with Valve Index and DCS
 
-Download link: [VRNeckSaferV20VRNeckSaferV204VRNeckSaferV206.zip](https://gitlab.com/NobiWan/vrnecksafer/-/blob/master/VRNeckSafer/Release/VRNeckSaferV206.zip)
+Download link: [VRNeckSaferV20VRNeckSaferV204VRNeckSaferV207.zip](https://gitlab.com/NobiWan/vrnecksafer/-/blob/master/VRNeckSafer/Release/VRNeckSaferV207.zip)

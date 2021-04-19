@@ -78,18 +78,23 @@ namespace VRNeckSafer
             AutorotGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
             AutorotGridView.RowHeadersVisible = false;
             AutorotGridView.Columns[0].HeaderText = @"act";
+            AutorotGridView.Columns[0].HeaderCell.Style.Font = DefaultFont;
             AutorotGridView.Columns[0].HeaderCell.Style.ForeColor = System.Drawing.Color.Red;
             AutorotGridView.Columns[0].HeaderCell.Style.BackColor = System.Drawing.Color.LightGray;
             AutorotGridView.Columns[1].HeaderText = @"de";
+            AutorotGridView.Columns[1].HeaderCell.Style.Font = DefaultFont;
             AutorotGridView.Columns[1].HeaderCell.Style.ForeColor = System.Drawing.Color.Green;
             AutorotGridView.Columns[1].HeaderCell.Style.BackColor = System.Drawing.Color.LightGray;
             AutorotGridView.Columns[2].HeaderText = @"rot";
+            AutorotGridView.Columns[2].HeaderCell.Style.Font = DefaultFont;
             AutorotGridView.Columns[2].HeaderCell.Style.ForeColor = System.Drawing.Color.Black;
             AutorotGridView.Columns[2].HeaderCell.Style.BackColor = System.Drawing.Color.LightGray;
             AutorotGridView.Columns[3].HeaderText = @"L/R";
+            AutorotGridView.Columns[3].HeaderCell.Style.Font = DefaultFont;
             AutorotGridView.Columns[3].HeaderCell.Style.ForeColor = System.Drawing.Color.Blue;
             AutorotGridView.Columns[3].HeaderCell.Style.BackColor = System.Drawing.Color.LightGray;
             AutorotGridView.Columns[4].HeaderText = @"Fwd";
+            AutorotGridView.Columns[4].HeaderCell.Style.Font = DefaultFont;
             AutorotGridView.Columns[4].HeaderCell.Style.ForeColor = System.Drawing.Color.CadetBlue;
             AutorotGridView.Columns[4].HeaderCell.Style.BackColor = System.Drawing.Color.LightGray;
 
@@ -125,7 +130,7 @@ namespace VRNeckSafer
             if (!enable) auto_offset_angle = 0;
         }
 
-        private void setButtonToolTip(Button b, ButtonConfig bc)
+        public void setButtonToolTip(Button b, ButtonConfig bc)
         {
             string Text = js.NameFromGuid(bc.JoystickGUID) + ": " + bc.Button;
             if (bc.UseModifier)
@@ -194,8 +199,15 @@ namespace VRNeckSafer
         private void loopTimer_Tick(object sender, EventArgs e)
         {
             bool reset_pressed = checkButtonPress(SetResetButton, conf.ResetButton);
-            bool l_pressed = checkButtonPress(SetLeftButton, conf.LeftButton);
-            bool r_pressed = checkButtonPress(SetRightButton, conf.RightButton);
+            bool l_pressed = js.IsButtonPressed(conf.LeftButton);
+            bool r_pressed = js.IsButtonPressed(conf.RightButton);
+            if (conf.MultipleLRbuttons)
+            {
+                l_pressed |= js.IsButtonPressed(conf.LeftButton2);
+                l_pressed |= js.IsButtonPressed(conf.LeftButton3);
+                r_pressed |= js.IsButtonPressed(conf.RightButton2);
+                r_pressed |= js.IsButtonPressed(conf.RightButton3);
+            }
             bool h1 = checkButtonPress(SetHoldButton1, conf.HoldButton1);
             bool h2 = checkButtonPress(SetHoldButton2, conf.HoldButton2);
             bool h3 = checkButtonPress(SetHoldButton3, conf.HoldButton3);
@@ -208,21 +220,29 @@ namespace VRNeckSafer
             {
                 LeftLabel.ForeColor = System.Drawing.Color.LightGreen;
                 LeftLabel.BackColor = SystemColors.ControlText;
+                SetLeftButton.ForeColor = System.Drawing.Color.LightGreen;
+                SetLeftButton.BackColor = SystemColors.ControlText;
             }
             else
             {
                 LeftLabel.ForeColor = SystemColors.ControlText;
                 LeftLabel.BackColor = SystemColors.Control;
+                SetLeftButton.ForeColor = SystemColors.ControlText;
+                SetLeftButton.BackColor = SystemColors.Control;
             }
             if (r_pressed)
             {
                 RightLabel.ForeColor = System.Drawing.Color.LightGreen;
                 RightLabel.BackColor = SystemColors.ControlText;
+                SetRightButton.ForeColor = System.Drawing.Color.LightGreen;
+                SetRightButton.BackColor = SystemColors.ControlText;
             }
             else
             {
                 RightLabel.ForeColor = SystemColors.ControlText;
                 RightLabel.BackColor = SystemColors.Control;
+                SetRightButton.ForeColor = SystemColors.ControlText;
+                SetRightButton.BackColor = SystemColors.Control;
             }
             trans_offset = new Vector3(0, 0, 0);
 
@@ -507,7 +527,7 @@ namespace VRNeckSafer
         {
             AutorotGridView.Height = AutorotGridView.RowCount * 22 + 20;
             AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 111);
-            MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 430));
+            MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 406));
             conf.WriteConfig();
             if (gr != null)
                 gr.Graph_ValuesChanged();
@@ -517,7 +537,7 @@ namespace VRNeckSafer
         {
             AutorotGridView.Height = AutorotGridView.RowCount * 22 + 20;
             AutorotGridView.MaximumSize = new System.Drawing.Size(AutorotGridView.Width, Size.Height - groupAuto.Location.Y - 111);
-            MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 430));
+            MaximumSize = new System.Drawing.Size(MaximumSize.Width, Math.Max(min_form_heigh, AutorotGridView.RowCount * 22 + 406));
             conf.WriteConfig();
             if (gr != null)
                 gr.Graph_ValuesChanged();
@@ -537,16 +557,32 @@ namespace VRNeckSafer
 
         private void SetLeftButton_Click(object sender, EventArgs e)
         {
-            ButtonForm frm = new ButtonForm(this, "Button for Left Rotation:", conf.LeftButton);
-            frm.ShowDialog();
+            if (conf.MultipleLRbuttons == false)
+            {
+                ButtonForm frm = new ButtonForm(this, "Button for Left Rotation:", conf.LeftButton); 
+                frm.ShowDialog();
+            }
+            else
+            {
+                MultiButtons frm = new MultiButtons(this, "Left",  conf.LeftButton, conf.LeftButton2, conf.LeftButton3);
+                frm.ShowDialog();
+            }
             setButtonToolTip(SetLeftButton, conf.LeftButton);
             setLabelToolTip(LeftLabel, conf.LeftButton);
         }
 
         private void SetRightButton_Click(object sender, EventArgs e)
         {
-            ButtonForm frm = new ButtonForm(this, "Button for Right Rotation:", conf.RightButton);
-            frm.ShowDialog();
+            if (conf.MultipleLRbuttons == false)
+            {
+                ButtonForm frm = new ButtonForm(this, "Button for Right Rotation:", conf.RightButton);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MultiButtons frm = new MultiButtons(this, "Right", conf.RightButton, conf.RightButton2, conf.RightButton3);
+                frm.ShowDialog();
+            }
             setButtonToolTip(SetRightButton, conf.RightButton);
             setLabelToolTip(RightLabel, conf.RightButton);
         }
@@ -712,6 +748,7 @@ namespace VRNeckSafer
         {
             if (conf.StartMinimized) startMinimzedToolStripMenuItem.Checked = true;
             if (conf.MinimizeToTray) minimizeToTrayToolStripMenuItem.Checked = true;
+            if (conf.MultipleLRbuttons) MultipleLRButtonsToolStripMenuItem.Checked = true;
 
             switch (conf.GameMode)
             {
@@ -798,6 +835,27 @@ namespace VRNeckSafer
             ((ToolStripMenuItem)e.ClickedItem).Checked = true;
             int.TryParse(e.ClickedItem.Text.Substring(0,2), out conf.PitchLimForAutorot);
             conf.WriteConfig();
+        }
+
+        private void moreLRButtonsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MultipleLRButtonsToolStripMenuItem.Checked)
+            {
+                MultipleLRButtonsToolStripMenuItem.Checked = false;
+                conf.MultipleLRbuttons = false;
+                conf.WriteConfig();
+            }
+            else
+            {
+                MultipleLRButtonsToolStripMenuItem.Checked = true;
+                conf.MultipleLRbuttons = true;
+                conf.WriteConfig();
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

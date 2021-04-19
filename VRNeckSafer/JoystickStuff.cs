@@ -138,7 +138,7 @@ namespace VRNeckSafer
                 if (use8wayhat)
                     return State.PointOfViewControllers[p] == b;
 
-                return Math.Abs(State.PointOfViewControllers[p] - b) < 5000;
+                return (Math.Abs(State.PointOfViewControllers[p] - b) < 5000)  || (State.PointOfViewControllers[p]==31500 && b==0);
             }
         }
         public JoyBut ScanJoysticks()

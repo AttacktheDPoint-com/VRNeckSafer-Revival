@@ -200,6 +200,7 @@ namespace VRNeckSafer
             butconf.Use8WayHat = Use8WayHatCheckBox.Checked;
 
             mf.conf.WriteConfig();
+
             Close();
         }
 

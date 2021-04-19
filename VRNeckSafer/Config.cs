@@ -31,12 +31,30 @@ namespace VRNeckSafer
             togglestate = false;
             laststate = false;
         }
+        public ButtonConfig copyButtonConfig(ButtonConfig b)
+        {
+            b.JoystickGUID = string.Copy(JoystickGUID);
+            b.Button = string.Copy(Button);
+            b.ModJoystickGUID = string.Copy(ModJoystickGUID);
+            b.ModButton = string.Copy(ModButton);
+            b.UseModifier = UseModifier;
+            b.Use8WayHat = Use8WayHat;
+            b.Invert = Invert;
+            b.Toggle = Toggle;
+
+            return b;
+        }
+
     }
 
     public class Config
     {
         public ButtonConfig LeftButton;
+        public ButtonConfig LeftButton2;
+        public ButtonConfig LeftButton3;
         public ButtonConfig RightButton;
+        public ButtonConfig RightButton2;
+        public ButtonConfig RightButton3;
         public ButtonConfig ResetButton;
         public ButtonConfig HoldButton1;
         public ButtonConfig HoldButton2;
@@ -49,6 +67,7 @@ namespace VRNeckSafer
         public bool Auto;
         public bool StartMinimized;
         public bool MinimizeToTray;
+        public bool MultipleLRbuttons;
         public string GameMode;
         public string AppMode;
         public string PosCompensation;
@@ -60,7 +79,11 @@ namespace VRNeckSafer
         public Config()
         {
             LeftButton = new ButtonConfig();
+            LeftButton2 = new ButtonConfig();
+            LeftButton3 = new ButtonConfig();
             RightButton = new ButtonConfig();
+            RightButton2 = new ButtonConfig();
+            RightButton3 = new ButtonConfig();
             ResetButton = new ButtonConfig();
             HoldButton1 = new ButtonConfig();
             HoldButton2 = new ButtonConfig();
@@ -76,6 +99,7 @@ namespace VRNeckSafer
             PosCompensation = "when seated";
             StartMinimized = false;
             MinimizeToTray = false;
+            MultipleLRbuttons = false;
             PitchLimForAutorot = 90;
             AutoSteps = new List<int[]>();
         }
