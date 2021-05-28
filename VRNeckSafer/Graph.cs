@@ -303,7 +303,7 @@ namespace VRNeckSafer
             gr.DrawRectangle(blackPen, L1);
             gr.DrawString("Rotational offset:", myFont, new SolidBrush(System.Drawing.Color.Black), L1.X + 1, L1.Y + 2);
             gr.DrawString(" Activation (act)", myFont, new SolidBrush(System.Drawing.Color.Red), L1.X + 1, L1.Y + 17);
-            gr.DrawString(" Dectivation (de)", myFont, new SolidBrush(System.Drawing.Color.Green), L1.X + 1, L1.Y + 32);
+            gr.DrawString(" Deactivation (de)", myFont, new SolidBrush(System.Drawing.Color.Green), L1.X + 1, L1.Y + 32);
             Rectangle L2 = new Rectangle(ClientSize.Width - 192, 10, 137, 48);
             gr.FillRectangle(new SolidBrush(System.Drawing.Color.White), L2);
             gr.DrawRectangle(blackPen, L2);
