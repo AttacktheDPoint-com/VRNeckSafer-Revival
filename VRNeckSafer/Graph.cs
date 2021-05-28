@@ -298,7 +298,7 @@ namespace VRNeckSafer
             LRLine();
             FwdLine();
 
-            Rectangle L1 = new Rectangle(65, 10, 120, 48);
+            Rectangle L1 = new Rectangle(65, 10, 125, 48);
             gr.FillRectangle(new SolidBrush(System.Drawing.Color.White), L1);
             gr.DrawRectangle(blackPen, L1);
             gr.DrawString("Rotational offset:", myFont, new SolidBrush(System.Drawing.Color.Black), L1.X + 1, L1.Y + 2);
