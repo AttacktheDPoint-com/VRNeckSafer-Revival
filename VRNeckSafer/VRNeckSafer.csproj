@@ -155,6 +155,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Release\VRNeckSaferv01exp.zip" />
+    <None Include="Release\VRNeckSaferv02exp.zip" />
     <None Include="Release\VRNeckSaferV16.zip" />
     <None Include="Release\VRNeckSaferV202.zip" />
     <None Include="Release\VRNeckSaferV203.zip" />
