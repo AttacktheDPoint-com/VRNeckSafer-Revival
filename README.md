@@ -100,7 +100,7 @@ fix for fwd translation when autorotation to left
  - Added option to select more than one reset button
 
  **Update v2.09:**
- - Fixed crash when joystick disconnects. Reaquires joystick when reconnected.
+ - Fixed crash when joystick disconnects. Reacquires joystick when reconnected.
  - Added seperate reset button for accumulative mode
 
 known issues:
