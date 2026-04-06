@@ -103,7 +103,38 @@ fix for fwd translation when autorotation to left
  - Fixed crash when joystick disconnects. Reacquires joystick when reconnected.
  - Added seperate reset button for accumulative mode
 
+ **Update v2.10 (community patch):**
+
+ Bug fixes:
+ - Fixed modifier device dropdown resetting the main button assignment
+ - Fixed pitch limit for autorotation triggering when looking down instead of up
+ - Fixed crash when PitchLimForAutorot is 0 in config file
+ - Fixed toggle state persisting to config file, causing missed button presses on reload
+ - Fixed GDI handle leak in graph window (bitmaps and brushes not disposed on redraw)
+ - Fixed dialog windows leaking native resources (now properly disposed after close)
+ - Fixed Hold button dialog titles incorrectly saying "Button for Reset"
+ - Fixed Zero button not resetting yaw offset (was calling wrong method)
+ - Fixed MultiButtons Cancel leaving VRStuff with stale config reference
+ - Fixed joystick scan crash when joystick unplugged during scan dialog
+ - Atomic config file writes to prevent corruption on crash or power loss
+ - Suppressed unnecessary config file writes during startup
+ - Extracted duplicated default AutoSteps into single method
+ - App-specific singleton mutex name to avoid conflicts
+ - Config passed to VRStuff via constructor instead of static field
+ - Clean exception on SteamVR failure instead of hard exit
+ - Removed dead code and updated version label
+
+ **Update v2.11-beta (VR behavior changes — needs headset testing):**
+
+ These builds change how VRNS interacts with the SteamVR chaperone system. Test each one with a headset before using in a flight session.
+
+ - **v2.11-beta1:** Replaced `ShowWorkingSetPreview` with `CommitWorkingCopy` to eliminate chaperone boundary grid flickering on every offset change
+ - **v2.11-beta2:** Chaperone reset pose no longer committed to live config — eliminates a single-frame glitch where the un-offset view was briefly visible
+ - **v2.11-beta3:** Added SteamVR disconnect handling — if SteamVR crashes mid-flight, the app shows "SteamVR disconnected" instead of crashing
+
 known issues:
 still problems with Valve Index and Varjo Aero
 
-Download link: [VRNeckSaferV209.zip](https://gitlab.com/NobiWan/vrnecksafer/-/blob/master/VRNeckSafer/Release/VRNeckSaferV209.zip)
+Download links:
+- Stable: [VRNeckSaferV210.zip](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases/tag/v2.10)
+- Beta: [v2.11 betas](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases)
