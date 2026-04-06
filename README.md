@@ -1,5 +1,40 @@
+# VRNeckSafer — Community Patch
+
+> **This is not just a fork.** This repo contains NobiWan's original [VRNeckSafer](https://gitlab.com/NobiWan/vrnecksafer) with a community fix pass — 23 bug fixes, crash guards, resource leak fixes, and performance optimizations. No new features were added. The original author's code and design are preserved; we only fixed things that were broken. See the [OpenXR version (XRNeckSafer)](https://github.com/AttacktheDPoint-com/XRNeckSafer) for the same treatment on the OpenXR codebase.
+
+**Latest stable:** [v2.10](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases/tag/v2.10) (drop-in replacement for v2.09) | **Beta:** [v2.11 betas](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases) (VR behavior changes, needs headset testing)
+
+---
+
+## What's in the community patch?
+
+**v2.10 (stable)** — Safe fixes only, no VR behavior changes:
+- Fixed modifier device dropdown resetting main button assignment
+- Fixed pitch limit triggering when looking down instead of up
+- Fixed crash on invalid PitchLimForAutorot in config
+- Fixed toggle state leaking to config file (missed presses on reload)
+- Fixed GDI handle leaks in graph window (bitmaps and brushes)
+- Fixed dialog windows leaking native resources
+- Fixed Hold button dialogs titled "Button for Reset"
+- Fixed Zero button not resetting yaw offset (called wrong method)
+- Fixed MultiButtons Cancel leaving VRStuff with stale config
+- Fixed joystick scan crash on unplug during scan dialog
+- Atomic config writes to prevent corruption on crash
+- Suppressed unnecessary config writes during startup
+- App-specific singleton mutex name
+- Clean exception handling on SteamVR failure
+
+**v2.11-beta** — VR behavior changes (needs headset testing before use):
+- **beta1:** Eliminated chaperone boundary grid flickering (CommitWorkingCopy replaces ShowWorkingSetPreview)
+- **beta2:** Eliminated single-frame glitch on offset change (skip commit on reset pose)
+- **beta3:** SteamVR disconnect handling (shows status instead of crashing)
+
+---
+
+## Description
+
 VRNeckSafer tries to help virtual pilots flying in VR to not break their neck while trying to check their six.
-It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2 and DCS **with SteamVR**. (for the OpenXR version look here : [**XRNeckSafer**](https://gitlab.com/NobiWan/xrnecksafer))
+It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2, DCS, and War Thunder **with SteamVR**. (for the OpenXR version look here : [**XRNeckSafer**](https://github.com/AttacktheDPoint-com/XRNeckSafer))
 
 <img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv209.JPG">    <img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv209b.JPG"> 
  
@@ -166,38 +201,5 @@ fix for fwd translation when autorotation to left
  - Fixed crash when joystick disconnects. Reacquires joystick when reconnected.
  - Added seperate reset button for accumulative mode
 
- **Update v2.10 (community patch):**
-
- Bug fixes:
- - Fixed modifier device dropdown resetting the main button assignment
- - Fixed pitch limit for autorotation triggering when looking down instead of up
- - Fixed crash when PitchLimForAutorot is 0 in config file
- - Fixed toggle state persisting to config file, causing missed button presses on reload
- - Fixed GDI handle leak in graph window (bitmaps and brushes not disposed on redraw)
- - Fixed dialog windows leaking native resources (now properly disposed after close)
- - Fixed Hold button dialog titles incorrectly saying "Button for Reset"
- - Fixed Zero button not resetting yaw offset (was calling wrong method)
- - Fixed MultiButtons Cancel leaving VRStuff with stale config reference
- - Fixed joystick scan crash when joystick unplugged during scan dialog
- - Atomic config file writes to prevent corruption on crash or power loss
- - Suppressed unnecessary config file writes during startup
- - Extracted duplicated default AutoSteps into single method
- - App-specific singleton mutex name to avoid conflicts
- - Config passed to VRStuff via constructor instead of static field
- - Clean exception on SteamVR failure instead of hard exit
- - Removed dead code and updated version label
-
- **Update v2.11-beta (VR behavior changes — needs headset testing):**
-
- These builds change how VRNS interacts with the SteamVR chaperone system. Test each one with a headset before using in a flight session.
-
- - **v2.11-beta1:** Replaced `ShowWorkingSetPreview` with `CommitWorkingCopy` to eliminate chaperone boundary grid flickering on every offset change
- - **v2.11-beta2:** Chaperone reset pose no longer committed to live config — eliminates a single-frame glitch where the un-offset view was briefly visible
- - **v2.11-beta3:** Added SteamVR disconnect handling — if SteamVR crashes mid-flight, the app shows "SteamVR disconnected" instead of crashing
-
 known issues:
 still problems with Valve Index and Varjo Aero
-
-Download links:
-- Stable: [VRNeckSaferV210.zip](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases/tag/v2.10)
-- Beta: [v2.11 betas](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases)
