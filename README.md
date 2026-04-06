@@ -1,8 +1,8 @@
-# VRNeckSafer — Community Patch
+# VRNeckSafer — Revival
 
-> **This is not just a fork.** This repo contains NobiWan's original [VRNeckSafer](https://gitlab.com/NobiWan/vrnecksafer) with a community fix pass — 23 bug fixes, crash guards, resource leak fixes, and performance optimizations. No new features were added. The original author's code and design are preserved; we only fixed things that were broken. See the [OpenXR version (XRNeckSafer)](https://github.com/AttacktheDPoint-com/XRNeckSafer) for the same treatment on the OpenXR codebase.
+> **This is not just a fork.** This repo contains NobiWan's original [VRNeckSafer](https://gitlab.com/NobiWan/vrnecksafer) with a community fix pass — 23 bug fixes, crash guards, resource leak fixes, and performance optimizations. No new features were added. The original author's code and design are preserved; we only fixed things that were broken. See the [OpenXR version (XRNeckSafer)](https://github.com/AttacktheDPoint-com/XRNeckSafer-Rework) for the same treatment on the OpenXR codebase.
 
-**Latest stable:** [v2.10](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases/tag/v2.10) (drop-in replacement for v2.09) | **Beta:** [v2.11 betas](https://github.com/AttacktheDPoint-com/VRNeckSafer/releases) (VR behavior changes, needs headset testing)
+**Latest stable:** [v2.10](https://github.com/AttacktheDPoint-com/VRNeckSafer-Revival/releases/tag/v2.10) (drop-in replacement for v2.09) | **Beta:** [v2.11 betas](https://github.com/AttacktheDPoint-com/VRNeckSafer-Revival/releases) (VR behavior changes, needs headset testing)
 
 ---
 
@@ -34,7 +34,7 @@
 ## Description
 
 VRNeckSafer tries to help virtual pilots flying in VR to not break their neck while trying to check their six.
-It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2, DCS, and War Thunder **with SteamVR**. (for the OpenXR version look here : [**XRNeckSafer**](https://github.com/AttacktheDPoint-com/XRNeckSafer))
+It adds an angular offset to the current viewing angle by pressing a joystick button. Currently working with IL2, DCS, and War Thunder **with SteamVR**. (for the OpenXR version look here : [**XRNeckSafer**](https://github.com/AttacktheDPoint-com/XRNeckSafer-Rework))
 
 <img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv209.JPG">    <img src="https://gitlab.com/NobiWan/vrnecksafer/-/raw/master/VRNeckSafer/Release/VRNSv209b.JPG"> 
  
