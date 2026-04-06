@@ -155,7 +155,10 @@ namespace VRNeckSafer
             else
                 OpenVR.ChaperoneSetup.SetWorkingStandingZeroPoseToRawTrackingPose(ref newSetup);
 
-            OpenVR.ChaperoneSetup.ShowWorkingSetPreview();
+            // CommitWorkingCopy applies the pose without flashing the chaperone grid.
+            // ShowWorkingSetPreview was called every tick, causing visible boundary
+            // flickering in VR whenever the offset changed.
+            OpenVR.ChaperoneSetup.CommitWorkingCopy(EChaperoneConfigFile.Live);
         }
 
         public Vector3 rotateCoord(Vector3 v, double a)
