@@ -221,8 +221,20 @@ namespace VRNeckSafer
             bool h2 = checkButtonPress(SetHoldButton2, conf.HoldButton2);
             bool h3 = checkButtonPress(SetHoldButton3, conf.HoldButton3);
             bool h4 = checkButtonPress(SetHoldButton4, conf.HoldButton4);
-            // getHmdPitch() returns 90 when level, decreasing toward 0 when looking up
-            bool pitchlimit = 90 - vr.getHmdPitch() > conf.PitchLimForAutorot;
+            // Wrap all VR calls in try/catch — if SteamVR crashes or disconnects
+            // mid-flight, the OpenVR COM calls throw. Without this, an unhandled
+            // exception kills the app with no useful error message.
+            bool pitchlimit;
+            try
+            {
+                // getHmdPitch() returns 90 when level, decreasing toward 0 when looking up
+                pitchlimit = 90 - vr.getHmdPitch() > conf.PitchLimForAutorot;
+            }
+            catch (Exception)
+            {
+                HMDYawLabel.Text = "HMD yaw: SteamVR disconnected";
+                return;
+            }
 
             bool autofrozen = h1 || h2 || h3 || h4 || pitchlimit;
 
